@@ -4,6 +4,7 @@ import Login from '@/components/Prijava/Login'
 import Signup from '@/components/Prijava/Signup'
 import Home from '@/components/Home'
 import About from '@/components/About'
+import Games from '@/components/Games'
 
 Vue.use(VueRouter)
 
@@ -25,12 +26,21 @@ const routes = [
     path: '/Home',
     name: 'Home',
     component: Home
+  
   },
   {
     path: '/About',
     name: 'About',
     component: About
-  }
+  },
+
+  {
+    path: '/Games',
+    name: 'Games',
+    component: Games
+  },
+
+  
 
 ]
 
