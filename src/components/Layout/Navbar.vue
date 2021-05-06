@@ -12,13 +12,14 @@
                 </mdb-navbar-nav>
 
                 <mdb-navbar-nav right >
-                    <mdb-dropdown tag="li" class="nav-item mx-5" > 
-          <mdb-dropdown-toggle tag="a" navLink color="" slot="toggle" waves-fixed >user@gmail.com</mdb-dropdown-toggle>
-          <mdb-dropdown-menu>
-            <mdb-dropdown-item><router-link to="/Playlist">Playlist</router-link></mdb-dropdown-item>
-            <mdb-dropdown-item><router-link to="/">Sign Out</router-link></mdb-dropdown-item>
-          </mdb-dropdown-menu>
-        </mdb-dropdown>
+                <mdb-dropdown start>
+                    <mdb-dropdown-toggle style=" -webkit-box-shadow: none; -moz-box-shadow: none;box-shadow: none; color:white;" color="#03a9f4" slot="toggle">User@email.com</mdb-dropdown-toggle>
+                    <mdb-dropdown-menu color="primary">
+                      <mdb-dropdown-item><router-link to="/Playlist">Playlist</router-link></mdb-dropdown-item>
+                    <mdb-dropdown-item><router-link to="/">Sign Out</router-link></mdb-dropdown-item>
+                    </mdb-dropdown-menu>
+                </mdb-dropdown>
+            
                    
                     
              </mdb-navbar-nav>

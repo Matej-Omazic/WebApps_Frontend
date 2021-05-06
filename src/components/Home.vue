@@ -23,7 +23,7 @@
               <img src="@/assets/Gta5.jpg" alt="Snow" class="mb-3" style="width:140px; height:180px;">
             </div>
             <div class="column">
-              <img src="@/assets/Zelda.jpg" alt="Forest" class="mb-3" style="width:140px; height:180px;">
+             <router-link to="/Zelda"> <img src="@/assets/Zelda.jpg" alt="Forest" class="mb-3" style="width:140px; height:180px;"></router-link>
             </div>
             <div class="column">
               <img src="@/assets/Gta5.jpg" alt="Mountains" class="mb-3" style="width:140px; height:180px;">
@@ -49,7 +49,7 @@
               <img src="@/assets/Gta5.jpg" alt="Snow" class="mb-3" style="width:140px; height:180px;">
             </div>
             <div class="column">
-              <img src="@/assets/Zelda.jpg" alt="Forest" class="mb-3" style="width:140px; height:180px;">
+             <router-link to="/Zelda"><img src="@/assets/Zelda.jpg" alt="Forest" class="mb-3" style="width:140px; height:180px;"></router-link>
             </div>
             <div class="column">
               <img src="@/assets/Gta5.jpg" alt="Mountains" class="mb-3" style="width:140px; height:180px;">

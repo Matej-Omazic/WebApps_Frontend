@@ -5,6 +5,7 @@ import Signup from '@/components/Prijava/Signup'
 import Home from '@/components/Home'
 import About from '@/components/About'
 import Games from '@/components/Games'
+import Zelda from '@/components/List_games/Zelda'
 
 Vue.use(VueRouter)
 
@@ -39,7 +40,11 @@ const routes = [
     name: 'Games',
     component: Games
   },
-
+  {
+    path: '/Zelda',
+    name: 'Zelda',
+    component: Zelda
+  },
   
 
 ]
