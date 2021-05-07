@@ -38,7 +38,7 @@
               <img src="@/assets/Igrice/Zelda/Zelda_photo_2.jpg" alt="Forest" class="mb-3  mr-3" style="width:280px; height:169px;">
             </div>
             <div class="column">
-              <img src="@/assets/Igrice/Zelda/Zelda_photo_3.jpg" alt="Mountains" class="mb-3" style="width:280px; height:169px;">
+              <img src="@/assets/Igrice/Zelda/Zelda_photo_3.jpg" alt="Mountains" class="mb-3 mr-3" style="width:280px; height:169px;">
             </div>
           </div>
         </div>
@@ -114,7 +114,7 @@
                 <b-card class=" mx-auto" style="max-width: 900px; -webkit-box-shadow: none; -moz-box-shadow: none;box-shadow: none; ">
                     <b-card-text class="" style="max-width 200px; color:black; text-align:left;">
                          <p style="font-size:22px;">Comments</p>
-                         <mdb-input type="textarea" outline inputClass="z-depth-1 p-3" placeholder="shadow textarea"/>                     
+                         <mdb-input type="textarea" outline inputClass="z-depth-1 p-3" placeholder="Write a comment..."/>                     
                      </b-card-text>
                      <button type="button" style="float:right;" class="btn btn-outline-primary comm" data-mdb-ripple-color="dark">Comment</button>
                 </b-card>

@@ -1,77 +1,50 @@
 <template>
 
-<div>
-    <Navbar />
+    <div>
+        <Navbar />
 
 
-  <div>
+        <div>
 
-        <mdb-navbar class="blue-grey lighten-5 mx-auto mt-5" style=" max-width:900px;">
-            <mdb-navbar-brand href="#">List of all games</mdb-navbar-brand>
-            <mdb-navbar-toggler>
-                    <mdb-navbar-nav right>
-                <mdb-form-inline class="ml-auto">
-                    <mdb-input class="mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
-                </mdb-form-inline>
-                    </mdb-navbar-nav>
-            </mdb-navbar-toggler>
-        </mdb-navbar>
+            <mdb-navbar class="blue-grey lighten-5 mx-auto mt-5" style=" max-width:900px;">
+                <mdb-navbar-brand href="#">List of all games</mdb-navbar-brand>
+                <mdb-navbar-toggler>
+                        <mdb-navbar-nav right>
+                    <mdb-form-inline class="ml-auto">
+                        <mdb-input v-model="store.search_text" class="mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
+                    </mdb-form-inline>
+                        </mdb-navbar-nav>
+                </mdb-navbar-toggler>
+            </mdb-navbar>
 
-
-  </div>
-
-
+        </div>
 
 
 
-<div class=" mx-auto" style="max-width: 900px;">
- 
-    <b-card-group dock>
-    <b-card class="mt-3 " style="max-width: 450px; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none;">
-        
-        <b-card img-src="https://i.ibb.co/CKFBPBv/Gta5.jpg"  img-alt="Card image" img-left class="mb-3" >
-            <b-card-text class="mt-5" style="max-width 200px;" >
-                <p>Grand Theft Auto V <br>Action, Adventure, Comedy <br>17 September 2013<br>&#11088;96/100 </p>
-            </b-card-text>
-        </b-card>
-        
-        </b-card>
 
-        <b-card class="mt-3 " style="max-width: 450px; -webkit-box-shadow: none; -moz-box-shadow: none;	box-shadow: none;  ">
-        <router-link to="/Zelda">
-        <b-card img-src="https://i.ibb.co/rdMnFhR/zelda.jpg"  img-alt="Card image" img-left class="mb-3" style="height: 246px; ">
-        <b-card-text class="mt-5" style="max-width 200px;">
-            <p>The Legend of Zelda: Breath of the Wild <br>Action, Adventure, Fantasy  <br>3 March 2017<br>&#11088;97/100 </p>
-        </b-card-text>
-        </b-card>
-        </router-link>
-        </b-card>
 
-    </b-card-group >
+        <div class=" mx-auto" style="max-width: 900px;">
+
+            <game-card v-for="g_card in filter_search" :key="g_card.url" :info="g_card" />
+
+        </div>
+
+
 
     
 
-</div>
+
+        <Footer />
 
 
 
-
-
-
-    <Footer />
-
-
-
-</div>
+    </div>
 
 
 </template>
 
 
 <style scoped>
-
-
-
 
 </style>
 
@@ -80,6 +53,19 @@
 import { mdbCard, mdbView, mdbMask, mdbCardImage, mdbCardTitle, mdbCardText, mdbCardFooter, mdbCardBody } from 'mdbvue';
 import Navbar from '@/components/Layout/Navbar'
 import Footer from '@/components/Layout/Footer'
+import GameCard from '@/components/GameCard'
+import store from '@/store'
+
+
+
+let g_cards = [];
+
+g_cards = [
+    {url: 'https://i.ibb.co/CKFBPBv/Gta5.jpg', game_name: "Grand Theft Auto V", genre: "Action, Adventure, Comedy", rel_date: "17 September 2013", rank: "96/100"},
+    {url: 'https://i.ibb.co/rdMnFhR/zelda.jpg', game_name: "The Legend of Zelda: Breath of the Wild", genre: "Action, Adventure, Fantasy", rel_date: "3 March 2017", rank:"97/100"},
+];
+
+
   
   export default {
     components: {
@@ -92,9 +78,34 @@ import Footer from '@/components/Layout/Footer'
       mdbCardTitle,
       mdbCardText,
       mdbCardFooter,
-      mdbCardBody
-    }
+      mdbCardBody,
+      GameCard,
+    },
+
+        data() {
+            return {
+                store,
+                g_cards: g_cards,
+            };
+        },
+    
+    computed: {
+        filter_search() {
+            
+            let term = this.store.search_text;
+            let New_g_card = [];
+            
+            for(let g_card of this.g_cards){
+                if (g_card.game_name.indexOf(term) >= 0) {
+                    New_g_card.push(g_card);
+                }
+            }
+            return New_g_card;
+        },
+    },
   }
+
+
 
 
 </script>
