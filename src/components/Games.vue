@@ -25,7 +25,13 @@
 
         <div class=" mx-auto" style="max-width: 900px;">
 
+            <b-card-group deck style="margin: 0;">
+
             <game-card v-for="g_card in filter_search" :key="g_card.url" :info="g_card" />
+
+            </b-card-group>
+            
+            
 
         </div>
 
@@ -46,6 +52,8 @@
 
 <style scoped>
 
+
+
 </style>
 
 
@@ -61,8 +69,9 @@ import store from '@/store'
 let g_cards = [];
 
 g_cards = [
-    {url: 'https://i.ibb.co/CKFBPBv/Gta5.jpg', game_name: "Grand Theft Auto V", genre: "Action, Adventure, Comedy", rel_date: "17 September 2013", rank: "96/100"},
-    {url: 'https://i.ibb.co/rdMnFhR/zelda.jpg', game_name: "The Legend of Zelda: Breath of the Wild", genre: "Action, Adventure, Fantasy", rel_date: "3 March 2017", rank:"97/100"},
+    {url: 'https://i.ibb.co/CKFBPBv/Gta5.jpg', game_name: "Grand Theft Auto V", genre: "Action, Adventure, Comedy", rel_date: "17 September 2013", rank: "96/100", route:"/Home"},
+    {url: 'https://i.ibb.co/rdMnFhR/zelda.jpg', game_name: "The Legend of Zelda: Breath of the Wild", genre: "Action, Adventure, Fantasy", rel_date: "3 March 2017", rank:"97/100",  route:"/Zelda"},
+
 ];
 
 
@@ -103,6 +112,11 @@ g_cards = [
             return New_g_card;
         },
     },
+    mounted () {
+      window.scrollTo(0, 0)
+    },
+
+
   }
 
 

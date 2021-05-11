@@ -11,9 +11,8 @@
 
         <br> <br> <br> <br> <br> <br>
                 <div style="text-align: left;" class="ml-5">           
-                <div style="float:left">Popular Games</div>
-                <div><hr style="clear: none; position: relative; top: 0.8rem;"></div>
-
+                <div class="mb-5" style="float:left">Popular Games</div><br>
+                <hr style="clear: none; position: relative; top: 0.8rem;">
         </div>
         <br> <br>
        
@@ -36,8 +35,8 @@
 
 
          <div style="text-align: left;" class="ml-5 mt-5">           
-                <div style="float:left">New games</div>
-                <div><hr  style="clear: none; position: relative; top: 0.8rem;"></div>
+                <div style="float:left">New games</div><br>
+                <hr style="clear: none; position: relative; top: 0.8rem;">
 
         </div>
         <br> <br>
@@ -83,7 +82,10 @@
     components: {
       Navbar,
       Footer
-    }
+    },
+    mounted () {
+      window.scrollTo(0, 0)
+    },
   }
 
 
@@ -95,10 +97,10 @@
 hr {
     border: none;
     height: 1px;
-    /* Set the hr color */
-    color: #333; /* old IE */
-    background-color: #333; /* Modern Browsers */
-    width:85%;
+    color: #333;
+    background-color: #333;
+    width:100%;
+    margin: 0;
 }
 
 

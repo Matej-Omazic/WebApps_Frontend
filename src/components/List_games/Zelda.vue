@@ -139,7 +139,10 @@
       Navbar,
       Footer,
       mdbInput 
-    }
+    },
+    mounted () {
+      window.scrollTo(0, 0)
+    },
   }
        
 

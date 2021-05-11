@@ -6,6 +6,7 @@ import Home from '@/components/Home'
 import About from '@/components/About'
 import Games from '@/components/Games'
 import Zelda from '@/components/List_games/Zelda'
+import Playlist from '@/components/Playlist'
 
 Vue.use(VueRouter)
 
@@ -44,6 +45,11 @@ const routes = [
     path: '/Zelda',
     name: 'Zelda',
     component: Zelda
+  },
+  {
+    path: '/Playlist',
+    name: 'Playlist',
+    component: Playlist
   },
   
 

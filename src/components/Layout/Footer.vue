@@ -29,7 +29,7 @@
         <mdb-col md="2" lg="5" xl="4" class="mb-4 pl-5">
           <h6 class="text-uppercase font-weight-bold"><strong>Useful links</strong></h6>
           <hr class="info-color  mb-4 mt-0 d-inline-block mx-auto" style="width: 60px" />
-          <p><a href="#!">Games</a></p>
+          <p><router-link  to="/Games">Games</router-link></p>
           <p> <router-link  to="/About">About</router-link></p>
           <p><a href="#!">Your playlist</a></p>
          
