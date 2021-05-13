@@ -43,7 +43,12 @@
            
             </div>
             
-     
+        <b-form>
+         
+          
+        </b-form>
+      
+      
 
        
       
@@ -69,13 +74,23 @@
   import Navbar from '@/components/Layout/Navbar'
   import Footer from '@/components/Layout/Footer'
   import GameCard from '@/components/GameCard'
+  import Zelda from '@/components/List_games/Zelda'
   
   export default {
+    
+   
     name: 'Playlist',
+  data(){
+    return{
+    
+    }
+  },
+    
     components: {
       Navbar,
       Footer,
       GameCard,
+      Zelda
     },
     mounted () {
       window.scrollTo(0, 0)

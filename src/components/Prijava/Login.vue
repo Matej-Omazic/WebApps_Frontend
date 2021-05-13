@@ -1,7 +1,9 @@
 <template>
 
   <div>
-    <img src="@/assets/Gamepad.png" height="130px;" alt="logo" />
+    
+    <img src="@/assets/Gamepad.png" style="float:center" />
+    
   <div class="container login mx-auto " style="width:500px; height:600px; border-color:gray; border-style:solid;">
  
     <form class="tekst" >

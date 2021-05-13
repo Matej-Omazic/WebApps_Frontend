@@ -4,10 +4,10 @@
       <!-- igrica -->
     <div >
         <b-card class="mt-3 mx-auto" style="max-width: 900px; -webkit-box-shadow: none; -moz-box-shadow: none;	box-shadow: none; ">
-            <b-card img-src="https://i.ibb.co/rdMnFhR/zelda.jpg"  img-alt="Card image" img-left class="mb-3" style="height:246px;background-color:#7D7D7D; ">
-            <b-card-text class="mt-3" style="max-width 200px; color:white; text-align:left; ">
-                <p style="font-size:25px;">The Legend of Zelda: Breath of the Wild </p><p style="font-size:18px;">Video game released 3 March 2017</p>
-               <p style="font-size:18px;">Action, Adventure, Fantasy</p><p style="font-size:22px;">&#11088;97/100 </p>
+            <b-card img-src="https://i.ibb.co/CKFBPBv/Gta5.jpg"  img-alt="Card image" img-left class="mb-3" style="height:246px;background-color:#7D7D7D; ">
+            <b-card-text class="mt-2" style="max-width 200px; color:white; text-align:left; ">
+                <p style="font-size:25px;">Grand Theft Auto </p><p style="font-size:18px;">Video game released 17 September 2013</p>
+               <p style="font-size:18px;">Action, Adventure, Comedy</p><p style="font-size:22px;">&#11088;96/100 </p>
             </b-card-text>
             </b-card>
         </b-card>
@@ -16,9 +16,8 @@
        <b-form @submit.prevent="add_playlist">
         <b-card  class="mx-auto" style="max-width: 900px; -webkit-box-shadow: none; -moz-box-shadow: none;box-shadow: none; ">
              <b-card-text class="" style="max-width 200px; color:black; text-align:left;">
-            <p style="margin:0;"><b>Directors:</b> Hidemaro Fujibayashi, Hiroki Hirano</p>
-            <p style="margin:0;"><b>Writer:</b> Akihito Toda</p>
-            <p style="margin:0;"><b>Stars:</b> Kengo Takanashi, Yû Shimamura, Kôji Takeda</p>
+            <p style="margin:0;"><b>Writer:</b> Dan Houser, Rupert Humphries</p>
+            <p style="margin:0;"><b>Stars:</b> Shawn Fonteno, Ned Luke, Steven Ogg </p>
             </b-card-text>
             <div  style="float:left; "><b-button color="primary" style="max-width:400px;" type="submit" >Add to playlist</b-button ></div>
            <img v-bind:src="games" />
@@ -35,13 +34,13 @@
     <div class="mx-auto" style=" max-width: 900px; ">
            <div class="row" style=" max-width:900px; justify-content:center; ">
             <div class="column">
-              <img src="@/assets/Igrice/Zelda/Zelda_photo1.jpg" alt="Snow" class="mb-3 mr-3" style="width:280px; height:169px;">
+              <img src="@/assets/Igrice/GtaV/Gta_5_photo_1.jpg" alt="Snow" class="mb-3 mr-3" style="width:280px; height:169px;">
             </div>
             <div class="column">
-              <img src="@/assets/Igrice/Zelda/Zelda_photo_2.jpg" alt="Forest" class="mb-3  mr-3" style="width:280px; height:169px;">
+              <img src="@/assets/Igrice/GtaV/Gta_5_photo_2.jpg" alt="Forest" class="mb-3  mr-3" style="width:280px; height:169px;">
             </div>
             <div class="column">
-              <img src="@/assets/Igrice/Zelda/Zelda_photo_3.jpg" alt="Mountains" class="mb-3 mr-3" style="width:280px; height:169px;">
+              <img src="@/assets/Igrice/GtaV/Gta_5_photo_3.jpg" alt="Mountains" class="mb-3 mr-3" style="width:280px; height:169px;">
             </div>
           </div>
         </div>
@@ -53,10 +52,10 @@
                     <b-card class=" mx-auto" style="max-width: 900px; -webkit-box-shadow: none; -moz-box-shadow: none;box-shadow: none; ">
                         <b-card-text class="" style="max-width 200px; color:black; text-align:left;">
                             <p style="font-size:22px;">Details</p>
-                            <p style="margin:0;"> <b>Developer:</b> Nintendo EPD</p>
-                            <p style="margin:0;"> <b>Publisher:</b> Nintendo</p>
-                            <p style="margin:0;"> <b>Platforms:</b> Nintendo Switch, Wii U</p>
-                            <p style="margin:0;"> <b>Budget: </b> $20,000,000 (estimated)</p>
+                            <p style="margin:0;"> <b>Developer:</b> Rockstar games</p>
+                            <p style="margin:0;"> <b>Publisher:</b> Rockstar games</p>
+                            <p style="margin:0;"> <b>Platforms:</b> Playstation 3/4/5, Xbox 360/One, PC</p>
+                            <p style="margin:0;"> <b>Budget: </b> $265,000,000 (estimated)</p>
                         </b-card-text>
                 
                     </b-card>
@@ -69,10 +68,10 @@
                     <b-card class=" mx-auto" style="max-width: 900px; -webkit-box-shadow: none; -moz-box-shadow: none;box-shadow: none; ">
                         <b-card-text class="" style="max-width 200px; color:black; text-align:left;">
                             <p style="font-size:22px;">Time to beat</p>
-                            <p style="margin:0;"> <b>Main story:</b> 50 hours</p>
-                            <p style="margin:0;"> <b>Main story + Extras:</b> 96.5 hours</p>
-                            <p style="margin:0;"> <b>Completionist:</b> 188 hours</p>
-                            <p style="margin:0;"> <b>Speedrun(Any%): </b> 59m 57s</p>
+                            <p style="margin:0;"> <b>Main story:</b> 31.5 hours</p>
+                            <p style="margin:0;"> <b>Main story + Extras:</b> 47.5 hours</p>
+                            <p style="margin:0;"> <b>Completionist:</b> 78.5 hours</p>
+                            <p style="margin:0;"> <b>Speedrun(Any%): </b> 6h 39m 11s</p>
                         </b-card-text>
                 
                     </b-card>
@@ -83,11 +82,13 @@
                 <b-card class=" mx-auto" style="max-width: 900px; -webkit-box-shadow: none; -moz-box-shadow: none;box-shadow: none; ">
                     <b-card-text class="" style="max-width 200px; color:black; text-align:left;">
                          <p style="font-size:22px;">Storyline</p>
-                         <p style="margin:0;">In this 3D open-world entry in the Zelda series, Link is awakened from a deep slumber
-                                                 without his past memories in the post-apocalyptic Kingdom of Hyrule, and sets off on a journey
-                                                 to defeat the ancient evil Calamity Ganon. Link treks, climbs and glides through fields, forests
-                                                 and mountain ranges while meeting and helping friendly folk and defeating enemies in order to
-                                                 gather up the strength to face Ganon.</p>
+                         <p style="margin:0;">The sprawling sun-soaked metropolis of Los Santos is chock full of self-help coaches, 
+                           starlets and C-List celebrities, once on top of the media world, now struggling to stay relevant in time
+                            of economic malaise and lowest-common-denominator reality TV. Amidst this madness, three unique criminals
+                             plan their own chances of survival and success: Franklin, a street-level hustler in search of opportunities
+                              for serious money; Michael, an ex-con whose "retirement" is a less rosy than he hoped it would be; and Trevor,
+                               a violent dude driven by the chance for a quick high and the next big score. Nearly out of options, the crew risks
+                                it all in a series of daring and dangerous heists that could set them up for life - one way or the other.</p>
                          
                      </b-card-text>
                 </b-card>
@@ -98,16 +99,16 @@
                     <b-card class=" mx-auto" style="max-width: 900px; -webkit-box-shadow: none; -moz-box-shadow: none;box-shadow: none; ">
                         <b-card-text class="" style="max-width 200px; color:black; text-align:left;">
                             <p style="font-size:22px;">Cast</p>
-                            <p style="margin:0;">Kengo Takanashi as Link (voice)</p>
-                            <p style="margin:0;"> Yû Shimamura as Princess Zelda </p>
-                            <p style="margin:0;"> Kôji Takeda as Daruk (voice)</p>
-                            <p style="margin:0;"> Noboru Yamaguchi as Revali (voice)</p>
-                            <p style="margin:0;"> Mayu Isshiki as Mipha (voice)</p>
-                            <p style="margin:0;"> Rei Shimoda as Urbosa (voice)</p>
-                            <p style="margin:0;"> Hiroshi Naka as King Rhoam Bosphoramus Hyrule (voice)</p>
-                            <p style="margin:0;"> Shôko Tsuda as Impa</p>
-                            <p style="margin:0;"> Hideaki Nonaka as Great Deku Tree (voice)</p>
-                            <p style="margin:0;"> Kumiko Watanabe as Yunobo (voice)</p>
+                            <p style="margin:0;">Shawn Fonteno as Franklin Clinton</p>
+                            <p style="margin:0;"> Ned Luke as Michael Townley / De Santa </p>
+                            <p style="margin:0;"> Steven Ogg as Trevor Philips</p>
+                            <p style="margin:0;"> Gerald 'Slink' Johnson as Lamar Davis</p>
+                            <p style="margin:0;"> Vicki van Tassel as Amanda Townley / De Santa</p>
+                            <p style="margin:0;"> Abdel Gonzalez Andreas Sanchez (voice)</p>
+                            <p style="margin:0;"> Oberon K.A. Adjepong as Anton Beaudelaire (voice)</p>
+                            <p style="margin:0;"> Traci Godfrey as Ashley Butler (voice)</p>
+                            <p style="margin:0;"> Janet Hubert as Aunt Denise (voice)</p>
+                            <p style="margin:0;"> Ryan Woodle as Bradley Snider (voice)</p>
                         </b-card-text>
                 
                     </b-card>
