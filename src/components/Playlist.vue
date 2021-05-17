@@ -43,7 +43,7 @@
            
             </div>
             
-        <b-form>
+        <b-form >
          
           
         </b-form>
@@ -76,13 +76,13 @@
   import GameCard from '@/components/GameCard'
   import Zelda from '@/components/List_games/Zelda'
   
+  
   export default {
-    
-   
+
     name: 'Playlist',
   data(){
     return{
-    
+   
     }
   },
     
@@ -90,8 +90,10 @@
       Navbar,
       Footer,
       GameCard,
-      Zelda
+      Zelda,
+      
     },
+     
     mounted () {
       window.scrollTo(0, 0)
     },

@@ -113,7 +113,35 @@ g_cards = [
         },
     },
     mounted () {
-      window.scrollTo(0, 0)
+        window.scrollTo(0, 0);
+
+        g_cards = []
+        fetch("http://localhost:3000/games")
+            .then(r => {
+            return r.json()
+            })
+            .then(data =>{
+            console.log("Podaci s backenda", data)
+
+            let data2 = data.map(element =>{
+                return{
+                    url: element.img_url,
+                    game_name: element.name,
+                    genre: element.genre,
+                    rel_date: element.release_date,
+                    rank: element.rate,
+                    route: element.route
+
+                }
+
+                
+            })
+
+            this.g_cards= data2;
+
+            })
+
+
     },
 
 
