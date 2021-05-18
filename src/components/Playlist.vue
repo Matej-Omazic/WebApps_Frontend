@@ -20,7 +20,7 @@
 
             <b-card class="mx-auto text-left" style="width: 900px; -webkit-box-shadow:none; -moz-box-shadow:none; box-shadow:none; padding:0;">
     
-               <img src="@/assets/Gta5.jpg" alt="Mountains" style="width:140px; height:180px;">
+               <router-link to="/GtaV"><img src="@/assets/Gta5.jpg" alt="Snow" class="mb-3" style="width:140px; height:180px;"></router-link>
                 <label> 
                         <p class="text-left ml-3">Grand Theft Auto V</p>
                         <p class="text-left ml-3">&#11088; 96/100</p> 
@@ -32,7 +32,7 @@
 
             <b-card class="mx-auto text-left" style="width: 900px; -webkit-box-shadow:none; -moz-box-shadow:none; box-shadow:none; padding:0;">
     
-               <img src="@/assets/Zelda.jpg" alt="Mountains" style="width:140px; height:180px;">
+               <router-link to="/Zelda"> <img src="@/assets/Zelda.jpg" alt="Forest" class="mb-3" style="width:140px; height:180px;"></router-link>
                 <label> 
                         <p class="text-left ml-3">The Legend of Zelda: Breath of the Wild</p>
                         <p class="text-left ml-3">&#11088; 97/100</p> 

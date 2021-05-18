@@ -27,7 +27,7 @@
 
             <b-card-group deck style="margin: 0;">
 
-            <game-card v-for="g_card in filter_search" :key="g_card.url" :info="g_card" />
+            <game-card v-for="game in games" :key="game.url" :info="game" />
 
             </b-card-group>
             
@@ -63,6 +63,7 @@ import Navbar from '@/components/Layout/Navbar'
 import Footer from '@/components/Layout/Footer'
 import GameCard from '@/components/GameCard'
 import store from '@/store'
+import {Games} from '@/services/index.js';
 
 
 
@@ -89,13 +90,16 @@ g_cards = [
       mdbCardFooter,
       mdbCardBody,
       GameCard,
+      Games
     },
 
         data() {
             return {
                 store,
                 g_cards: g_cards,
+                games: [],
             };
+
         },
     
     computed: {
@@ -114,35 +118,29 @@ g_cards = [
     },
     mounted () {
         window.scrollTo(0, 0);
-
-        g_cards = []
-        fetch("http://localhost:3000/games")
-            .then(r => {
-            return r.json()
-            })
-            .then(data =>{
-            console.log("Podaci s backenda", data)
-
-            let data2 = data.map(element =>{
-                return{
-                    url: element.img_url,
-                    game_name: element.name,
-                    genre: element.genre,
-                    rel_date: element.release_date,
-                    rank: element.rate,
-                    route: element.route
-
-                }
-
-                
-            })
-
-            this.g_cards= data2;
-
-            })
-
+              
+        this.fetchGames()
 
     },
+
+
+    name: "Games",
+    methods: {
+       async fetchGames(term) {
+
+            term = term || store.search_text
+            this.games = await Games.getAll(term)
+
+            
+        }
+    },
+
+    watch: {
+        "store.search_text": function(){
+            //console.log("Promjenio sam se!", this.store.search_text)
+            this.fetchGames()
+        }
+    }
 
 
   }

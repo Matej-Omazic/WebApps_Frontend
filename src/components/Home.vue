@@ -25,7 +25,7 @@
              <router-link to="/Zelda"> <img src="@/assets/Zelda.jpg" alt="Forest" class="mb-3" style="width:140px; height:180px;"></router-link>
             </div>
             <div class="column">
-              <img src="@/assets/Gta5.jpg" alt="Mountains" class="mb-3" style="width:140px; height:180px;">
+              <router-link to="/GtaV"><img src="@/assets/Gta5.jpg" alt="Snow" class="mb-3" style="width:140px; height:180px;"></router-link>
             </div>
           </div>
         </div>
@@ -51,7 +51,7 @@
              <router-link to="/Zelda"><img src="@/assets/Zelda.jpg" alt="Forest" class="mb-3" style="width:140px; height:180px;"></router-link>
             </div>
             <div class="column">
-              <img src="@/assets/Gta5.jpg" alt="Mountains" class="mb-3" style="width:140px; height:180px;">
+              <router-link to="/GtaV"><img src="@/assets/Gta5.jpg" alt="Snow" class="mb-3" style="width:140px; height:180px;"></router-link>
             </div>
           </div>
         </div>
@@ -76,7 +76,7 @@
 
   import Navbar from '@/components/Layout/Navbar'
   import Footer from '@/components/Layout/Footer'
-  
+
   export default {
     name: 'Home',
     components: {

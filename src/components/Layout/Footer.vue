@@ -31,7 +31,7 @@
           <hr class="info-color  mb-4 mt-0 d-inline-block mx-auto" style="width: 60px" />
           <p><router-link  to="/Games">Games</router-link></p>
           <p> <router-link  to="/About">About</router-link></p>
-          <p><a href="#!">Your playlist</a></p>
+          <p> <router-link  to="/Playlist">Your Playlist</router-link></p>
          
         </mdb-col>
         <mdb-col xl="4" class="mb-2">
