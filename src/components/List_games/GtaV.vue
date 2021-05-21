@@ -115,15 +115,18 @@
                <div class=" mx-auto" style="max-width: 900px;"> <hr style="clear: none; position: relative; "></div>
         </div>
      <!-- Comments -->    
-        <div>
+       <div>
                 <b-card class=" mx-auto" style="max-width: 900px; -webkit-box-shadow: none; -moz-box-shadow: none;box-shadow: none; ">
                     <b-card-text class="" style="max-width 200px; color:black; text-align:left;">
                          <p style="font-size:22px;">Comments</p>
+                         <p class="comm" v-for="comment in comments" :key="comment.game_id">{{comment.comment}} <br> by <b>{{comment.author}}</b></p> 
                          <mdb-input type="textarea" outline inputClass="z-depth-1 p-3" placeholder="Write a comment..."/>                     
                      </b-card-text>
                      <button type="button" style="float:right;" class="btn btn-outline-primary comm" data-mdb-ripple-color="dark">Comment</button>
                 </b-card>
         </div>
+     
+      
 
     <Footer />
 
@@ -138,7 +141,14 @@
   import { mdbInput } from 'mdbvue';
   import Games from '@/components/Games'
   import Playlist from '@/components/Playlist'
-  
+ 
+ let comments = [];
+
+    comments = [
+   
+    ];
+
+
   
   export default {
     
@@ -148,8 +158,8 @@
       return{
       
        games: null,
-       
-      }
+       comments:comments,
+      } 
     },
     components: {
       Navbar,
@@ -167,7 +177,24 @@
     },
 
     mounted () {
-      window.scrollTo(0, 0)
+      window.scrollTo(0, 0),
+       
+      this.comments = []
+      fetch("http://localhost:3000/comments")
+      .then(r=>{
+        return r.json()
+      })
+      .then(data =>{
+        console.log("Podaci s beckend",data)
+        let data2 = data.map(element =>{
+          return{
+            comment: element.comment ,
+            game_id: element.game_id,
+            author: element.author
+          }
+        })
+        this.comments = data2
+      })
     },
   }
        
@@ -184,5 +211,13 @@ hr {
     background-color: #707070; /* Modern Browsers */
     width:100%;
 }
+.comm{
+  color:black;
+  
+}
+.comm b{
+  color: #0c99e0;
+  font-size:13px;
 
+}
 </style>

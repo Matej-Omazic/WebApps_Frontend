@@ -2,13 +2,13 @@
     
 <mdb-navbar expand="large" dark color="light-blue">
         <mdb-navbar-brand href="#">
-            <img src="@/assets/Gamepad_bijeli.png" height="65px;" alt="logo" />
+        <router-link style="color:white;" to="/Home"> <img src="@/assets/Gamepad_bijeli.png" height="65px;" alt="logo"  /></router-link>
         </mdb-navbar-brand>
         <mdb-navbar-toggler>
                 <mdb-navbar-nav class="ml-5">
-                    <mdb-nav-item class="mr-5" href="#" active><router-link style="color:white;" to="/Home">Home</router-link></mdb-nav-item>
-                     <mdb-nav-item class="mr-5" href="#"><router-link style="color:white;" to="/Games">Games</router-link></mdb-nav-item>
-                    <mdb-nav-item class="mr-5" href="#"><router-link style="color:white;" to="/About"> About </router-link></mdb-nav-item>
+                   <router-link style="color:white;" to="/Home"> <mdb-nav-item class="mr-5" href="#" active>Home</mdb-nav-item></router-link>
+                     <router-link style="color:white;" to="/Games"><mdb-nav-item class="mr-5" href="#">Games</mdb-nav-item></router-link>
+                    <router-link style="color:white;" to="/About"><mdb-nav-item class="mr-5" href="#"> About </mdb-nav-item></router-link>
                 </mdb-navbar-nav>
 
                 <mdb-navbar-nav right >
