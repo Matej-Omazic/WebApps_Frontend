@@ -70,8 +70,8 @@ import {Games} from '@/services/index.js';
 let g_cards = [];
 
 g_cards = [
-    {url: 'https://i.ibb.co/CKFBPBv/Gta5.jpg', game_name: "Grand Theft Auto V", genre: "Action, Adventure, Comedy", rel_date: "17 September 2013", rank: "96/100", route:"/GtaV"},
-    {url: 'https://i.ibb.co/rdMnFhR/zelda.jpg', game_name: "The Legend of Zelda: Breath of the Wild", genre: "Action, Adventure, Fantasy", rel_date: "3 March 2017", rank:"97/100",  route:"/Zelda"},
+    {id: "1000", url: 'https://i.ibb.co/CKFBPBv/Gta5.jpg', game_name: "Grand Theft Auto V", genre: "Action, Adventure, Comedy", rel_date: "17 September 2013", rank: "96/100", route:"/GtaV"},
+    {id: "1001", url: 'https://i.ibb.co/rdMnFhR/zelda.jpg', game_name: "The Legend of Zelda: Breath of the Wild", genre: "Action, Adventure, Fantasy", rel_date: "3 March 2017", rank:"97/100",  route:"/Zelda"},
 
 ];
 

@@ -11,6 +11,7 @@ let Games = {
         let data = response.data
         data = data.map(element =>{
             return{
+                    id: element._id,
                     url: element.img_url,
                     game_name: element.name,
                     genre: element.genre,
