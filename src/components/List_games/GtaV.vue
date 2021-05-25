@@ -152,7 +152,7 @@
   
   export default {
     
-    name: 'Zelda',
+    name: 'GtaV',
    
     data (){
       return{

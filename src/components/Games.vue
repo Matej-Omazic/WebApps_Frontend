@@ -3,7 +3,6 @@
     <div>
         <Navbar />
 
-
         <div>
 
             <mdb-navbar class="blue-grey lighten-5 mx-auto mt-5" style=" max-width:900px;">
@@ -18,10 +17,7 @@
             </mdb-navbar>
 
         </div>
-
-
-
-
+       
 
         <div class=" mx-auto" style="max-width: 900px;">
 
@@ -36,8 +32,6 @@
         </div>
 
 
-
-    
 
 
         <Footer />
@@ -64,19 +58,9 @@ import Footer from '@/components/Layout/Footer'
 import GameCard from '@/components/GameCard'
 import store from '@/store'
 import {Games} from '@/services/index.js';
+import _ from 'lodash';
 
 
-
-let g_cards = [];
-
-g_cards = [
-    {id: "1000", url: 'https://i.ibb.co/CKFBPBv/Gta5.jpg', game_name: "Grand Theft Auto V", genre: "Action, Adventure, Comedy", rel_date: "17 September 2013", rank: "96/100", route:"/GtaV"},
-    {id: "1001", url: 'https://i.ibb.co/rdMnFhR/zelda.jpg', game_name: "The Legend of Zelda: Breath of the Wild", genre: "Action, Adventure, Fantasy", rel_date: "3 March 2017", rank:"97/100",  route:"/Zelda"},
-
-];
-
-
-  
   export default {
     components: {
       Navbar,
@@ -96,29 +80,21 @@ g_cards = [
         data() {
             return {
                 store,
-                g_cards: g_cards,
                 games: [],
             };
 
         },
-    
-    computed: {
-        filter_search() {
-            
-            let term = this.store.search_text;
-            let New_g_card = [];
-            
-            for(let g_card of this.g_cards){
-                if (g_card.game_name.indexOf(term) >= 0) {
-                    New_g_card.push(g_card);
-                }
-            }
-            return New_g_card;
-        },
+    watch: {
+        'store.search_text': _.debounce(function(val) {
+            this.fetchGames(val);
+        }, 500)
     },
-    mounted () {
+    mounted(){
         window.scrollTo(0, 0);
-              
+   },
+
+    created() {
+  
         this.fetchGames()
 
     },

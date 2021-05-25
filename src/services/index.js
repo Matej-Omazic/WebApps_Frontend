@@ -6,10 +6,20 @@ let Service = axios.create({
 })
 
 let Games = {
+    add(game){
+        return Service.game('/games',game)
+    },
+
     async getAll(search_text){
-        let response = await Service.get(`/games?name=${search_text}`)
-        let data = response.data
-        data = data.map(element =>{
+        let options = {};
+
+        if (search_text) {
+            options.params = {
+                name: search_text
+            };
+        }
+        let response = await Service.get('/games',options)
+        return response.data.map(element => {
             return{
                     id: element._id,
                     url: element.img_url,
@@ -18,13 +28,13 @@ let Games = {
                     rel_date: element.release_date,
                     rank: element.rate,
                     route: element.route
-                    }
+                  };
 
-        })
+        });
 
-        return data;
+       
     }
-} 
+};
 
 
 export {Service, Games}
