@@ -46,9 +46,21 @@ let Games = {
 
         });
 
-       
     }
 };
+let Komentari = {
+    async getAll(komentar){
+        let response = await Service.get(`/GtaV?${komentar}`)
+        let data = response.data
+        data = data.map(doc=>{
+            return { 
+            comment: doc.comment,
+            game_id: doc.game_id,
+            author: doc.author
+            }
+        })
+        return data;
+    }
+}
 
-
-export {Service, Games}
+export {Service, Games, Komentari}

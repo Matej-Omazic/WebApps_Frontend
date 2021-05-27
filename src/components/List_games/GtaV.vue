@@ -115,15 +115,20 @@
                <div class=" mx-auto" style="max-width: 900px;"> <hr style="clear: none; position: relative; "></div>
         </div>
      <!-- Comments -->    
-       <div>
+       <div>  
+         <form @submit="add_comment">
                 <b-card class=" mx-auto" style="max-width: 900px; -webkit-box-shadow: none; -moz-box-shadow: none;box-shadow: none; ">
                     <b-card-text class="" style="max-width 200px; color:black; text-align:left;">
                          <p style="font-size:22px;">Comments</p>
-                         <p class="comm" v-for="comment in comments" :key="comment.game_id">{{comment.comment}} <br> by <b>{{comment.author}}</b></p> 
-                         <mdb-input type="textarea" outline inputClass="z-depth-1 p-3" placeholder="Write a comment..."/>                     
+                         <p class="comm" v-for="komentari in komentari" :key="komentari._id" :values="komentari.comment">{{komentari.comment}} <br> by <b>{{komentari.author}}</b></p> 
+                      <mdb-input v-model="comment" type="textarea" outline inputClass="z-depth-1 p-3" placeholder="Write a comment..."/>  
+                                       
                      </b-card-text>
-                     <button type="button" style="float:right;" class="btn btn-outline-primary comm" data-mdb-ripple-color="dark">Comment</button>
+                     <button type="submit" style="float:right;" class="btn btn-outline-primary comm" data-mdb-ripple-color="dark">Comment</button>
+                
                 </b-card>
+                </form>
+             
         </div>
      
       
@@ -139,34 +144,34 @@
   import Navbar from '@/components/Layout/Navbar'
   import Footer from '@/components/Layout/Footer'
   import { mdbInput } from 'mdbvue';
-  import Games from '@/components/Games'
   import Playlist from '@/components/Playlist'
+  import {Games} from '@/services/index.js';
+  import {Komentari} from '@/services/index.js';
+  import {Service} from '@/services/index.js';
  
  let comments = [];
 
-    comments = [
-   
-    ];
+    comments = [];
 
 
   
   export default {
     
-    name: 'GtaV',
+    name: 'Zelda',
    
     data (){
       return{
       
        games: null,
-       comments:comments,
+       comment:"",
+       komentari:{}
       } 
     },
     components: {
       Navbar,
       Footer,
       mdbInput,
-      Games,
-      Playlist,
+      Playlist
     },
     methods:{
       add_playlist(){
@@ -174,28 +179,30 @@
         console.log(this.games);
 
       },
+      add_comment(){
+        let newCom = {
+          comment: this.comment
+        }
+        console.log(newCom)
+        Service.patch('/GtaV/60af8ce9c49a172af8ebc878',newCom)
+        .then((result)=>{
+          console.log(result)
+        })
+      },
+
+      async pozoviCom(term){
+        this.komentari = await Komentari.getAll(term)
+      }
     },
 
     mounted () {
-      window.scrollTo(0, 0),
-       
-      this.comments = []
-      fetch("http://localhost:3000/comments")
-      .then(r=>{
-        return r.json()
-      })
-      .then(data =>{
-        console.log("Podaci s beckend",data)
-        let data2 = data.map(element =>{
-          return{
-            comment: element.comment ,
-            game_id: element.game_id,
-            author: element.author
-          }
-        })
-        this.comments = data2
-      })
+      window.scrollTo(0, 0)
+      
     },
+    created (){
+      this.pozoviCom();
+    }
+    
   }
        
 
