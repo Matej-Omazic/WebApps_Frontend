@@ -19,13 +19,13 @@
        <div class="mx-auto" style=" max-width: 81%; ">
            <div class="row" style=" max-width: 1000px;  ">
             <div class="column">
-              <router-link to="/GtaV"><img src="@/assets/Gta5.jpg" alt="Snow" class="mb-3" style="width:140px; height:180px;"></router-link>
+              <router-link to="/GtaV"><img src="https://i.ibb.co/CKFBPBv/Gta5.jpg" alt="Snow" class="mb-3" style="width:140px; height:180px;"></router-link>
             </div>
             <div class="column">
-             <router-link to="/Zelda"> <img src="@/assets/Zelda.jpg" alt="Forest" class="mb-3" style="width:140px; height:180px;"></router-link>
+             <router-link to="/Zelda"> <img src="https://i.ibb.co/R7tPbpL/Zelda.jpg" alt="Forest" class="mb-3" style="width:140px; height:180px;"></router-link>
             </div>
             <div class="column">
-              <router-link to="/GtaV"><img src="@/assets/Gta5.jpg" alt="Snow" class="mb-3" style="width:140px; height:180px;"></router-link>
+              <router-link to="/It_takes_2"><img src="https://i.ibb.co/YBsw0VY/ittakes2.png" alt="Snow" class="mb-3" style="width:140px; height:180px;"></router-link>
             </div>
           </div>
         </div>
@@ -45,13 +45,13 @@
            <div class="mx-auto" style="max-width: 81%; ">
            <div class="row" style=" max-width: 1000px;  ">
             <div class="column">
-             <router-link to="/GtaV"><img src="@/assets/Gta5.jpg" alt="Snow" class="mb-3" style="width:140px; height:180px;"></router-link>
+             <router-link to="/GtaV"><img src="https://i.ibb.co/CKFBPBv/Gta5.jpg" alt="Snow" class="mb-3" style="width:140px; height:180px;"></router-link>
             </div>
             <div class="column">
-             <router-link to="/Zelda"><img src="@/assets/Zelda.jpg" alt="Forest" class="mb-3" style="width:140px; height:180px;"></router-link>
+             <router-link to="/Zelda"><img src="https://i.ibb.co/R7tPbpL/Zelda.jpg" alt="Forest" class="mb-3" style="width:140px; height:180px;"></router-link>
             </div>
             <div class="column">
-              <router-link to="/GtaV"><img src="@/assets/Gta5.jpg" alt="Snow" class="mb-3" style="width:140px; height:180px;"></router-link>
+              <router-link to="/It_takes_2"><img src="https://i.ibb.co/YBsw0VY/ittakes2.png" alt="Snow" class="mb-3" style="width:140px; height:180px;"></router-link>
             </div>
           </div>
         </div>

@@ -8,6 +8,7 @@ import Games from '@/components/Games'
 import Zelda from '@/components/List_games/Zelda'
 import GtaV from '@/components/List_games/GtaV'
 import Playlist from '@/components/Playlist'
+import It_takes_2 from '@/components/List_games/It_takes_2'
 
 
 Vue.use(VueRouter)
@@ -57,6 +58,11 @@ const routes = [
     path: '/Playlist',
     name: 'Playlist',
     component: Playlist
+  },
+  {
+    path: '/It_takes_2',
+    name: 'It_takes_2',
+    component: It_takes_2
   },
  
   
