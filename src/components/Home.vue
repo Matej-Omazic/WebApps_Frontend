@@ -8,7 +8,7 @@
       
             <div class="bg-image" style="background-image: url('https://i.ibb.co/V9Pwtx8/%20%20%20%20Background-cb-Copy.jpg'); height:720px; background-size: cover;background-attachment: scroll;"></div> 
 
-
+<!--Popular Games-->
         <br> <br> <br> <br> <br> <br>
                 <div style="text-align: left;" class="ml-5">           
                 <div class="mb-5" style="float:left">Popular Games</div><br>
@@ -24,15 +24,13 @@
             <div class="column">
              <router-link to="/Zelda"> <img src="https://i.ibb.co/R7tPbpL/Zelda.jpg" alt="Forest" class="mb-3" style="width:140px; height:180px;"></router-link>
             </div>
-            <div class="column">
-              <router-link to="/It_takes_2"><img src="https://i.ibb.co/YBsw0VY/ittakes2.png" alt="Snow" class="mb-3" style="width:140px; height:180px;"></router-link>
-            </div>
+            
           </div>
         </div>
         <br>
 
 
-
+<!--New Games-->
 
          <div style="text-align: left;" class="ml-5 mt-5">           
                 <div style="float:left">New games</div><br>
@@ -45,14 +43,12 @@
            <div class="mx-auto" style="max-width: 81%; ">
            <div class="row" style=" max-width: 1000px;  ">
             <div class="column">
-             <router-link to="/GtaV"><img src="https://i.ibb.co/CKFBPBv/Gta5.jpg" alt="Snow" class="mb-3" style="width:140px; height:180px;"></router-link>
+             <router-link to="/It_takes_2"><img src="https://i.ibb.co/YBsw0VY/ittakes2.png" alt="Snow" class="mb-3" style="width:140px; height:180px;"></router-link>
             </div>
             <div class="column">
-             <router-link to="/Zelda"><img src="https://i.ibb.co/R7tPbpL/Zelda.jpg" alt="Forest" class="mb-3" style="width:140px; height:180px;"></router-link>
+             <router-link to="/Cyberpunk"><img src="https://i.ibb.co/jfySqVB/resized-image-Promo.jpg" alt="Forest" class="mb-3" style="width:140px; height:180px;"></router-link>
             </div>
-            <div class="column">
-              <router-link to="/It_takes_2"><img src="https://i.ibb.co/YBsw0VY/ittakes2.png" alt="Snow" class="mb-3" style="width:140px; height:180px;"></router-link>
-            </div>
+            
           </div>
         </div>
 

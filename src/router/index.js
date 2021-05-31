@@ -10,6 +10,7 @@ import GtaV from '@/components/List_games/GtaV'
 import Playlist from '@/components/Playlist'
 import It_takes_2 from '@/components/List_games/It_takes_2'
 import All_games from '@/components/All_games'
+import Cyberpunk from '@/components/List_games/Cyberpunk'
 
 
 Vue.use(VueRouter)
@@ -64,6 +65,11 @@ const routes = [
     path: '/It_takes_2',
     name: 'It_takes_2',
     component: It_takes_2
+  },
+  {
+    path: '/Cyberpunk',
+    name: 'Cyberpunk',
+    component: Cyberpunk
   },
   {
     path: '/games:id',
