@@ -11,8 +11,8 @@ let Games = {
     },
 
     async getOne(id){
-        let response = await Service.get(`/games/${id}`)
-        let element = response.data
+        let response = await Service.get(`/games/${id}`);
+        let element = response.data;
         return{
             id: element._id,
             url: element.img_url,
@@ -22,6 +22,8 @@ let Games = {
             rank: element.rate,
             route: element.route
           };
+
+
     },
 
     async getAll(search_text){
@@ -46,9 +48,15 @@ let Games = {
 
         });
 
-    }
+    },
+
+    
 };
 let Komentari = {
+    add(comm) {
+        return Service.post('/GtaV', comm);
+    },
+
     async getAll(komentar){
         let response = await Service.get(`/GtaV?${komentar}`)
         let data = response.data
@@ -60,7 +68,19 @@ let Komentari = {
             }
         })
         return data;
-    }
+    },
+    async getAll_zelda(komentar){
+        let response = await Service.get(`/Zelda?${komentar}`)
+        let data = response.data
+        data = data.map(doc=>{
+            return { 
+            comment: doc.comment,
+            game_id: doc.game_id,
+            author: doc.author
+            }
+        })
+        return data;
+    },
 }
 
 export {Service, Games, Komentari}

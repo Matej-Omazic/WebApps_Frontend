@@ -116,7 +116,7 @@
         </div>
      <!-- Comments -->    
        <div>  
-         <form @submit="add_comment">
+         <form @submit="add_commentv2">
                 <b-card class=" mx-auto" style="max-width: 900px; -webkit-box-shadow: none; -moz-box-shadow: none;box-shadow: none; ">
                     <b-card-text class="" style="max-width 200px; color:black; text-align:left;">
                          <p style="font-size:22px;">Comments</p>
@@ -149,10 +149,6 @@
   import {Komentari} from '@/services/index.js';
   import {Service} from '@/services/index.js';
  
- let comments = [];
-
-    comments = [];
-
 
   
   export default {
@@ -164,14 +160,17 @@
       
        games: null,
        comment:"",
-       komentari:{}
+       komentari:{},
+       games_id: "",
+       pomocna:"",
       } 
     },
     components: {
       Navbar,
       Footer,
       mdbInput,
-      Playlist
+      Playlist,
+      Games
     },
     methods:{
       add_playlist(){
@@ -179,20 +178,41 @@
         console.log(this.games);
 
       },
+
+    /*
       add_comment(){
         let newCom = {
           comment: this.comment
         }
         console.log(newCom)
-        Service.patch('/GtaV/60af8ce9c49a172af8ebc878',newCom)
+        Service.patch('/GtaV/60b4bc965b55f53bcb850b82',newCom)
         .then((result)=>{
           console.log(result)
         })
       },
+ */
+
+      async add_commentv2(){
+            let comm = {
+                comment: this.comment,
+                game_id: "1001",
+                author: "Salenjak",
+            };
+            let newpost = await Komentari.add(comm);
+            console.log('Spremljeni post', newpost.data);
+            this.$router.push({ name: 'GtaV' });
+      },
+
 
       async pozoviCom(term){
         this.komentari = await Komentari.getAll(term)
-      }
+      },
+
+      async pozoviIgru(term){
+        this.games_id = await Games.getAll(term)
+      },
+
+
     },
 
     mounted () {
@@ -201,6 +221,7 @@
     },
     created (){
       this.pozoviCom();
+      this.pozoviIgru();
     }
     
   }

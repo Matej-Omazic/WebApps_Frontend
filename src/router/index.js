@@ -9,6 +9,7 @@ import Zelda from '@/components/List_games/Zelda'
 import GtaV from '@/components/List_games/GtaV'
 import Playlist from '@/components/Playlist'
 import It_takes_2 from '@/components/List_games/It_takes_2'
+import All_games from '@/components/All_games'
 
 
 Vue.use(VueRouter)
@@ -63,6 +64,12 @@ const routes = [
     path: '/It_takes_2',
     name: 'It_takes_2',
     component: It_takes_2
+  },
+  {
+    path: '/games:id',
+    props: true,
+    name: 'All_games',
+    component: All_games
   },
  
   
