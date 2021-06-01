@@ -81,6 +81,42 @@ let Komentari = {
         })
         return data;
     },
+    async getAll_ittakes(komentar){
+        let response = await Service.get(`/It_takes_2?${komentar}`)
+        let data = response.data
+        data = data.map(doc=>{
+            return { 
+            comment: doc.comment,
+            game_id: doc.game_id,
+            author: doc.author
+            }
+        })
+        return data;
+    },
+}
+let Playlist = {
+    add(plist) {
+        return Service.post('/GtaVpl', plist);
+    },
+    add(plist) {
+        return Service.post('/Zeldapl', plist);
+    },
+
+    async getAll(lista){
+        let response = await Service.get(`/Playlist?${lista}`)
+        let data = response.data
+        data = data.map(doc=>{
+            return { 
+            url: doc.img_url,
+            name: doc.game_name,
+            grade: doc.rate,
+            author: doc.author,
+            route: doc.route
+            }
+        })
+        return data;
+    },
+   
 }
 
-export {Service, Games, Komentari}
+export {Service, Games, Komentari, Playlist}

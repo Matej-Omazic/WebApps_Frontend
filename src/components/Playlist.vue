@@ -15,34 +15,23 @@
         </div>
 
 
-       
-            <div class="max-width: 900px; mt-4">
+          
+            <form>   
+            <div class="max-width: 900px; mt-4 mb-3">
 
             <b-card class="mx-auto text-left" style="width: 900px; -webkit-box-shadow:none; -moz-box-shadow:none; box-shadow:none; padding:0;">
-    
-               <router-link to="/GtaV"><img src="https://i.ibb.co/CKFBPBv/Gta5.jpg" alt="Snow" class="mb-3" style="width:140px; height:180px;"></router-link>
-                <label> 
-                        <p class="text-left ml-3">Grand Theft Auto V</p>
-                        <p class="text-left ml-3">&#11088; 96/100</p> 
+              <div v-for="lista in lista" :key="lista._id" ><router-link :to="lista.route"><img v-bind:src="lista.url" style="width:140px; height:180px;" /></router-link>
+               <label> 
+                        <p class="text-left ml-3">{{lista.name}}</p>
+                        <p class="text-left ml-3">&#11088; {{lista.grade}}</p> 
                 </label>
-                
-             <hr style="background-color:#c2c2c2">
+              <hr style="background-color:#c2c2c2">
+              </div>
             </b-card>
-
-
-            <b-card class="mx-auto text-left" style="width: 900px; -webkit-box-shadow:none; -moz-box-shadow:none; box-shadow:none; padding:0;">
-    
-               <router-link to="/Zelda"> <img src="https://i.ibb.co/R7tPbpL/Zelda.jpg" alt="Forest" class="mb-3" style="width:140px; height:180px;"></router-link>
-                <label> 
-                        <p class="text-left ml-3">The Legend of Zelda: Breath of the Wild</p>
-                        <p class="text-left ml-3">&#11088; 97/100</p> 
-                </label>
-                
-             <hr style="background-color:#c2c2c2">
-            </b-card>
-           
             </div>
-            
+            </form> 
+          
+    
         <b-form >
          
           
@@ -75,6 +64,8 @@
   import Footer from '@/components/Layout/Footer'
   import GameCard from '@/components/GameCard'
   import Zelda from '@/components/List_games/Zelda'
+  import {Playlist} from '@/services/index.js';
+  import {Service} from '@/services/index.js';
   
   
   export default {
@@ -82,7 +73,7 @@
     name: 'Playlist',
   data(){
     return{
-   
+      lista:{},
     }
   },
     
@@ -91,13 +82,32 @@
       Footer,
       GameCard,
       Zelda,
+      Playlist,
+      Service
       
     },
      
+    methods: {
+     
+      async pozoviList(term){
+        this.lista = await Playlist.getAll(term)
+      },
+
+
+    },
+
     mounted () {
       window.scrollTo(0, 0)
+      
     },
+    created (){
+      this.pozoviList();
+      
+    }
+    
   }
+    
+  
 
 
 </script>

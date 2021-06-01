@@ -13,15 +13,24 @@
         </b-card>
     </div>
     <div>
-       <b-form @submit.prevent="add_playlist">
+       <b-form v-if="!klik" @submit.prevent="add_plist2">
         <b-card  class="mx-auto" style="max-width: 900px; -webkit-box-shadow: none; -moz-box-shadow: none;box-shadow: none; ">
              <b-card-text class="" style="max-width 200px; color:black; text-align:left;">
-            <p style="margin:0;"><b>Directors:</b> Hidemaro Fujibayashi, Hiroki Hirano</p>
-            <p style="margin:0;"><b>Writer:</b> Akihito Toda</p>
-            <p style="margin:0;"><b>Stars:</b> Kengo Takanashi, Yû Shimamura, Kôji Takeda</p>
+            <p style="margin:0;"><b>Writer:</b> Dan Houser, Rupert Humphries</p>
+            <p style="margin:0;"><b>Stars:</b> Shawn Fonteno, Ned Luke, Steven Ogg </p>
             </b-card-text>
-            <div  style="float:left; "><b-button color="primary" style="max-width:400px;" type="submit" >Add to playlist</b-button ></div>
-           <img v-bind:src="games" />
+            <div style="float:left; "><button class="add" type="submit" >Add to playlist</button ></div>
+        </b-card>
+        </b-form>
+
+
+         <b-form v-if="klik" @submit.prevent="add_plist2">
+        <b-card  class="mx-auto" style="max-width: 900px; -webkit-box-shadow: none; -moz-box-shadow: none;box-shadow: none; ">
+             <b-card-text class="" style="max-width 200px; color:black; text-align:left;">
+            <p style="margin:0;"><b>Writer:</b> Dan Houser, Rupert Humphries</p>
+            <p style="margin:0;"><b>Stars:</b> Shawn Fonteno, Ned Luke, Steven Ogg </p>
+            </b-card-text>
+            <div style="float:left; "><button class="del" type="submit" >Clear the playlist</button ></div>
         </b-card>
         </b-form>
     </div>
@@ -141,7 +150,7 @@
   import Navbar from '@/components/Layout/Navbar'
   import Footer from '@/components/Layout/Footer'
   import { mdbInput } from 'mdbvue';
-  import Playlist from '@/components/Playlist'
+  import {Playlist} from '@/services/index.js';
   import {Games} from '@/services/index.js';
   import {Komentari} from '@/services/index.js';
   import {Service} from '@/services/index.js';
@@ -155,7 +164,7 @@
    
     data (){
       return{
-      
+       klik:0,
        games: null,
        comment:"",
        komentari:{}
@@ -168,21 +177,29 @@
       Playlist
     },
     methods:{
-      add_playlist(){
-        this.games = 'https://i.ibb.co/CKFBPBv/Gta5.jpg'
-        console.log(this.games);
-
+      async add_plist2(){
+            let plist = {
+                img_url: "https://i.ibb.co/rdMnFhR/zelda.jpg",
+                game_name: "The Legend of Zelda: Breath of the Wild ",
+                rate: "97/100",
+                author:"Salenjak",
+                route: "/Zelda"
+            };
+            let newlist = await Playlist.add(plist);
+            this.klik = 1;
+            console.log('Spremljeni post', newlist.data);
       },
-      add_comment(){
-        let newCom = {
-          comment: this.comment
-        }
-        console.log(newCom)
-        Service.patch('/Zelda/60b4b3305b55f53bcb7c11ef',newCom)
-        .then((result)=>{
-          console.log(result)
-        })
+        async add_comment(){
+            let comm = {
+                comment: this.comment,
+                game_id: "1002",
+                author: "Zelda Salenjak",
+            };
+            let newpost = await Komentari.add(comm);
+            console.log('Spremljeni post', newpost.data);
+            this.$router.push({ name: 'Zelda' });
       },
+      
 
       async pozoviCom(term){
         this.komentari = await Komentari.getAll_zelda(term)
@@ -221,6 +238,26 @@ hr {
   color: #0c99e0;
   font-size:13px;
 
+}
+.add{
+  max-width: 450px;
+  width:350px;
+  background-color:#0c99e0;
+  border:none;
+  color:white;
+  text-align: center;
+  height:35px;
+  border-radius: 4px;
+}
+.del{
+  max-width: 450px;
+  width:350px;
+  background-color:#7D7D7D;
+  border:none;
+  color:white;
+  text-align: center;
+  height:35px;
+  border-radius: 4px;
 }
 
 </style>

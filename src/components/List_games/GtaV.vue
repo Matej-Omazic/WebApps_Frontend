@@ -13,14 +13,24 @@
         </b-card>
     </div>
     <div>
-       <b-form @submit.prevent="add_playlist">
+       <b-form v-if="!klik" @submit.prevent="add_plist">
         <b-card  class="mx-auto" style="max-width: 900px; -webkit-box-shadow: none; -moz-box-shadow: none;box-shadow: none; ">
              <b-card-text class="" style="max-width 200px; color:black; text-align:left;">
             <p style="margin:0;"><b>Writer:</b> Dan Houser, Rupert Humphries</p>
             <p style="margin:0;"><b>Stars:</b> Shawn Fonteno, Ned Luke, Steven Ogg </p>
             </b-card-text>
-            <div  style="float:left; "><b-button color="primary" style="max-width:400px;" type="submit" >Add to playlist</b-button ></div>
-           <img v-bind:src="games" />
+            <div style="float:left; "><button class="add" type="submit" >Add to playlist</button ></div>
+        </b-card>
+        </b-form>
+
+
+         <b-form v-if="klik" @submit.prevent="add_plist">
+        <b-card  class="mx-auto" style="max-width: 900px; -webkit-box-shadow: none; -moz-box-shadow: none;box-shadow: none; ">
+             <b-card-text class="" style="max-width 200px; color:black; text-align:left;">
+            <p style="margin:0;"><b>Writer:</b> Dan Houser, Rupert Humphries</p>
+            <p style="margin:0;"><b>Stars:</b> Shawn Fonteno, Ned Luke, Steven Ogg </p>
+            </b-card-text>
+            <div style="float:left; "><button class="del" type="submit" >Clear the playlist</button ></div>
         </b-card>
         </b-form>
     </div>
@@ -144,10 +154,10 @@
   import Navbar from '@/components/Layout/Navbar'
   import Footer from '@/components/Layout/Footer'
   import { mdbInput } from 'mdbvue';
-  import Playlist from '@/components/Playlist'
   import {Games} from '@/services/index.js';
   import {Komentari} from '@/services/index.js';
   import {Service} from '@/services/index.js';
+  import {Playlist} from '@/services/index.js';
  
 
   
@@ -157,7 +167,7 @@
    
     data (){
       return{
-      
+       klik:0,
        games: null,
        comment:"",
        komentari:{},
@@ -170,14 +180,11 @@
       Footer,
       mdbInput,
       Playlist,
-      Games
+      Games,
+      Service
     },
     methods:{
-      add_playlist(){
-        this.games = 'https://i.ibb.co/CKFBPBv/Gta5.jpg'
-        console.log(this.games);
-
-      },
+      
 
     /*
       add_comment(){
@@ -190,7 +197,20 @@
           console.log(result)
         })
       },
- */
+ */ 
+
+       async add_plist(){
+            let plist = {
+                img_url: "https://i.ibb.co/CKFBPBv/Gta5.jpg",
+                game_name: "Grand Theft Auto",
+                rate: "96/100",
+                author:"Salenjak",
+                route: "/GtaV"
+            };
+            let newlist = await Playlist.add(plist);
+            this.klik = 1;
+            console.log('Spremljeni post', newlist.data);
+      },
 
       async add_commentv2(){
             let comm = {
@@ -246,6 +266,25 @@ hr {
 .comm b{
   color: #0c99e0;
   font-size:13px;
-
+}
+.add{
+  max-width: 450px;
+  width:350px;
+  background-color:#0c99e0;
+  border:none;
+  color:white;
+  text-align: center;
+  height:35px;
+  border-radius: 4px;
+}
+.del{
+  max-width: 450px;
+  width:350px;
+  background-color:#7D7D7D;
+  border:none;
+  color:white;
+  text-align: center;
+  height:35px;
+  border-radius: 4px;
 }
 </style>

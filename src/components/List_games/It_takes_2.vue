@@ -13,15 +13,24 @@
         </b-card>
     </div>
     <div>
-       <b-form @submit.prevent="add_playlist">
+       <b-form v-if="!klik" @submit.prevent="add_plist">
         <b-card  class="mx-auto" style="max-width: 900px; -webkit-box-shadow: none; -moz-box-shadow: none;box-shadow: none; ">
              <b-card-text class="" style="max-width 200px; color:black; text-align:left;">
-            <p style="margin:0;"><b>Director:</b>Josef Fares</p>
-            <p style="margin:0;"><b>Writer:</b> Soni Jorgensen, Josef Fares</p>
-            <p style="margin:0;"><b>Stars:</b> Joseph Balderrama, Annabelle Dowler, Clare Corbett </p>
+            <p style="margin:0;"><b>Writer:</b> Dan Houser, Rupert Humphries</p>
+            <p style="margin:0;"><b>Stars:</b> Shawn Fonteno, Ned Luke, Steven Ogg </p>
             </b-card-text>
-            <div  style="float:left; "><b-button color="primary" style="max-width:400px;" type="submit" >Add to playlist</b-button ></div>
-           <img v-bind:src="games" />
+            <div style="float:left; "><button class="add" type="submit" >Add to playlist</button ></div>
+        </b-card>
+        </b-form>
+
+
+         <b-form v-if="klik" @submit.prevent="add_plist">
+        <b-card  class="mx-auto" style="max-width: 900px; -webkit-box-shadow: none; -moz-box-shadow: none;box-shadow: none; ">
+             <b-card-text class="" style="max-width 200px; color:black; text-align:left;">
+            <p style="margin:0;"><b>Writer:</b> Dan Houser, Rupert Humphries</p>
+            <p style="margin:0;"><b>Stars:</b> Shawn Fonteno, Ned Luke, Steven Ogg </p>
+            </b-card-text>
+            <div style="float:left; "><button class="del" type="submit" >Clear the playlist</button ></div>
         </b-card>
         </b-form>
     </div>
@@ -112,8 +121,8 @@
                <div class=" mx-auto" style="max-width: 900px;"> <hr style="clear: none; position: relative; "></div>
         </div>
     <!-- Comments -->    
-        <div>  
-         <form @submit="add_comment">
+         <div>  
+         <form @submit="add_commentv3">
                 <b-card class=" mx-auto" style="max-width: 900px; -webkit-box-shadow: none; -moz-box-shadow: none;box-shadow: none; ">
                     <b-card-text class="" style="max-width 200px; color:black; text-align:left;">
                          <p style="font-size:22px;">Comments</p>
@@ -140,18 +149,20 @@
   import Footer from '@/components/Layout/Footer'
   import { mdbInput } from 'mdbvue';
   import Games from '@/components/Games'
-  import Playlist from '@/components/Playlist'
+  import {Komentari} from '@/services/index.js';
+  import {Playlist} from '@/services/index.js';
   
   
   export default {
     
-    name: 'Zelda',
+    name: 'It_takes_2',
    
     data (){
       return{
-      
+       klik:0,
        games: null,
-       
+       komentari:{},
+       comment:""
       }
     },
     components: {
@@ -162,16 +173,42 @@
       Playlist,
     },
     methods:{
-      add_playlist(){
-        this.games = 'https://i.ibb.co/CKFBPBv/Gta5.jpg'
-        console.log(this.games);
 
+      async add_plist(){
+            let plist = {
+                img_url: "https://i.ibb.co/YBsw0VY/ittakes2.png",
+                game_name: "It takes two",
+                rate: "89/100",
+                author:"Salenjak",
+                route: "/It_takes_2"
+            };
+            let newlist = await Playlist.add(plist);
+            this.klik = 1;
+            console.log('Spremljeni post', newlist.data);
+      },
+
+      async add_commentv3(){
+            let comm = {
+                comment: this.comment,
+                game_id: "1003",
+                author: "It Takes Salenjak",
+            };
+            let newpost = await Komentari.add(comm);
+            console.log('Spremljeni post', newpost.data);
+            this.$router.push({ name: 'It_takes_2' });
+      },
+
+      async pozoviCom(term){
+        this.komentari = await Komentari.getAll_ittakes(term)
       },
     },
 
     mounted () {
       window.scrollTo(0, 0)
     },
+    created (){
+      this.pozoviCom();
+    }
   }
        
 
@@ -186,6 +223,34 @@ hr {
     color:#707070; /* old IE */
     background-color: #707070; /* Modern Browsers */
     width:100%;
+}
+.comm{
+  color:black;
+  
+}
+.comm b{
+  color: #0c99e0;
+  font-size:13px;
+}
+.add{
+  max-width: 450px;
+  width:350px;
+  background-color:#0c99e0;
+  border:none;
+  color:white;
+  text-align: center;
+  height:35px;
+  border-radius: 4px;
+}
+.del{
+  max-width: 450px;
+  width:350px;
+  background-color:#7D7D7D;
+  border:none;
+  color:white;
+  text-align: center;
+  height:35px;
+  border-radius: 4px;
 }
 
 </style>
