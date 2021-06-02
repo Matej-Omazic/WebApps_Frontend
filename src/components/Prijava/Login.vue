@@ -10,7 +10,7 @@
     <p class="text-center mb-2 mt-5" style="font-size:35px;">Sign in</p>
     <div style="max-width:400px;" class="mx-auto">
 
-      <mdb-input label="Your email" type="email"/>
+      <mdb-input label="Your username" type="email"/>
       <mdb-input label="Your password" type="password"/>
     </div>
     <div class="text-center">
@@ -21,7 +21,7 @@
 
   </form>
 
- <router-link class="h-40 mt-4 btn btn-light" style="width:375px; " to="/Signup"> Your Account</router-link>
+ <router-link class="h-40 mt-4 btn btn-light" style="width:375px; " to="/Signup"> Create your account</router-link>
   </div>
   </div>
 
