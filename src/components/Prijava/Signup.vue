@@ -13,14 +13,14 @@
       <mdb-input label="Pasword" type="password"/>
     </div>
     <div class="text-center">
-      <router-link class="h-40 mt-3 btn btn-info" style="width:375px; " to="/home">Create your account</router-link>
+      <button class="h-40 mt-3 btn btn-info" style="width:375px; " >Create your account</button>
     </div>
     <br><br><br>
 <h5 class="mx-auto" ><span >Already have an account?</span></h5>
 
   </form>
 
- <router-link class="h-40 mt-4 btn btn-light" style="width:375px; " to="/"> Sign-in</router-link>
+ <button class="h-40 mt-4 btn btn-light" style="width:375px; " to="/"> Sign-in</button>
   </div>
   </div>
 

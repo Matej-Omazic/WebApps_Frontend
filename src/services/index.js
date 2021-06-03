@@ -1,9 +1,11 @@
 import axios from 'axios'
+import $router from "@/router";
 
 let Service = axios.create({
     baseURL: 'http://localhost:3000',
     timeout: 3000
 })
+
 
 let Games = {
     add(game){
@@ -119,4 +121,43 @@ let Playlist = {
    
 }
 
-export {Service, Games, Komentari, Playlist}
+let Auth = {
+    async login(email,password){
+       let response = await Service.post("/auth",{
+            email: email,
+            password: password,
+       });
+        let user = response.data;
+
+        localStorage.setItem('user',JSON.stringify(user))
+        return true;
+    },
+    logout(){
+        localStorage.removeItem("user");
+      },
+    getUser(){
+        JSON.parse(localStorage.getItem("user"))
+    },
+
+    getToken() {
+        let user = Auth.getUser();
+        if (user && user.token) {
+          return user.token;
+        } else {
+          return false;
+        }
+      },
+
+      prijavljen() {
+        let user = Auth.getUser();
+        if (user && user.token) {
+          return true;
+        }
+        return false;
+      },
+    
+}
+
+
+
+export {Service, Games, Komentari, Playlist,Auth}
