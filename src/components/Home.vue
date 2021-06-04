@@ -6,7 +6,7 @@
 
 
       
-            <div class="bg-image" style="background-image: url('https://i.ibb.co/V9Pwtx8/%20%20%20%20Background-cb-Copy.jpg'); height:720px; background-size: cover;background-attachment: scroll;"></div> 
+            <div class="bg-image" style="background-image: url('https://i.ibb.co/ck8Gqz4/Background-cb-Copy.jpg'); height:720px; background-size: cover;background-attachment: scroll;"></div> 
 
 <!--Popular Games-->
         <br> <br> <br> <br> <br> <br>
@@ -19,10 +19,10 @@
        <div class="mx-auto" style=" max-width: 81%; ">
            <div class="row" style=" max-width: 1000px;  ">
             <div class="column">
-              <router-link to="/GtaV"><img src="https://i.ibb.co/CKFBPBv/Gta5.jpg" alt="Snow" class="mb-3" style="width:140px; height:180px;"></router-link>
+              <router-link to="Games/60ba3ace5b55f53bcb56ea1f"><img src="https://i.ibb.co/CKFBPBv/Gta5.jpg" alt="GtaV" class="mb-3" style="width:140px; height:180px;"></router-link>
             </div>
             <div class="column">
-             <router-link to="/Zelda"> <img src="https://i.ibb.co/R7tPbpL/Zelda.jpg" alt="Forest" class="mb-3" style="width:140px; height:180px;"></router-link>
+             <router-link to="Games/60ba3fbd5b55f53bcb5c5e6b"> <img src="https://i.ibb.co/R7tPbpL/Zelda.jpg" alt="Zelda" class="mb-3" style="width:140px; height:180px;"></router-link>
             </div>
             
           </div>
@@ -43,10 +43,10 @@
            <div class="mx-auto" style="max-width: 81%; ">
            <div class="row" style=" max-width: 1000px;  ">
             <div class="column">
-             <router-link to="/It_takes_2"><img src="https://i.ibb.co/YBsw0VY/ittakes2.png" alt="Snow" class="mb-3" style="width:140px; height:180px;"></router-link>
+             <router-link to="/Games/60ba441d5b55f53bcb60fb4b"><img src="https://i.ibb.co/YBsw0VY/ittakes2.png" alt="ItTakes2" class="mb-3" style="width:140px; height:180px;"></router-link>
             </div>
             <div class="column">
-             <router-link to="/Cyberpunk"><img src="https://i.ibb.co/jfySqVB/resized-image-Promo.jpg" alt="Forest" class="mb-3" style="width:140px; height:180px;"></router-link>
+             <router-link to="Games/60ba420b5b55f53bcb5edf18"><img src="https://i.ibb.co/jfySqVB/resized-image-Promo.jpg" alt="CP2077" class="mb-3" style="width:140px; height:180px;"></router-link>
             </div>
             
           </div>

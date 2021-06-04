@@ -83,12 +83,7 @@
                 <b-card class=" mx-auto" style="max-width: 900px; -webkit-box-shadow: none; -moz-box-shadow: none;box-shadow: none; ">
                     <b-card-text class="" style="max-width 200px; color:black; text-align:left;">
                          <p style="font-size:22px;">Storyline</p>
-                         <p style="margin:0;">Cyberpunk 2077 is an open-world, action-adventure story set in Night City, a megalopolis obsessed with power,
-                             amour and body modification. Assume the role of V, a mercenary outlaw going after a one-of-a-kind implant that is the key to
-                              immortality. You can customize your character’s cyberware, skillset and playstyle, and explore a vast city where the choices
-                               you make shape the story and the world around you. Become a cyberpunk, an urban mercenary equipped with cybernetic 
-                               enhancements and build your legend on the streets of Night City. Take the riskiest job of your life and go after a 
-                               prototype implant that is the key to immortality.</p>
+                         <p style="margin:0;">Cyberpunk 2077 is an open-world, action-adventure story set in Night City, a megalopolis obsessed with power, amour and body modification. Assume the role of V, a mercenary outlaw going after a one-of-a-kind implant that is the key to immortality. You can customize your character’s cyberware, skillset and playstyle, and explore a vast city where the choices you make shape the story and the world around you. Become a cyberpunk, an urban mercenary equipped with cybernetic enhancements and build your legend on the streets of Night City. Take the riskiest job of your life and go after a prototype implant that is the key to immortality.</p>
                          
                      </b-card-text>
                 </b-card>

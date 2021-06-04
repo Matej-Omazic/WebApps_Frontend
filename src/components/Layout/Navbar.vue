@@ -1,102 +1,102 @@
 <template>
-	<mdb-navbar expand="large" dark color="light-blue">
-		<mdb-navbar-brand href="#">
-			<router-link style="color: white" to="/">
-				<img src="@/assets/Gamepad_bijeli.png" height="65px;" alt="logo"
-			/></router-link>
-		</mdb-navbar-brand>
-		<mdb-navbar-toggler>
-			<mdb-navbar-nav class="ml-5">
-				<router-link style="color: white" to="/Home">
-					<mdb-nav-item class="mr-5" href="#" active
-						>Home</mdb-nav-item
-					></router-link
-				>
-				<router-link style="color: white" to="/Games"
-					><mdb-nav-item class="mr-5" href="#">Games</mdb-nav-item></router-link
-				>
-				<router-link style="color: white" to="/About"
-					><mdb-nav-item class="mr-5" href="#">
-						About
-					</mdb-nav-item></router-link
-				>
-			</mdb-navbar-nav>
+  <mdb-navbar expand="large" dark color="light-blue">
+    <mdb-navbar-brand href="#">
+      <router-link style="color: white" to="/">
+        <img src="@/assets/Gamepad_bijeli.png" height="65px;" alt="logo"
+      /></router-link>
+    </mdb-navbar-brand>
+    <mdb-navbar-toggler>
+      <mdb-navbar-nav class="ml-5">
+        <router-link style="color: white" to="/Home">
+          <mdb-nav-item class="mr-5" href="#" active
+            >Home</mdb-nav-item
+          ></router-link
+        >
+        <router-link style="color: white" to="/Games"
+          ><mdb-nav-item class="mr-5" href="#">Games</mdb-nav-item></router-link
+        >
+        <router-link style="color: white" to="/About"
+          ><mdb-nav-item class="mr-5" href="#">
+            About
+          </mdb-nav-item></router-link
+        >
+      </mdb-navbar-nav>
 
-			<mdb-navbar-nav right>
-				<mdb-dropdown start>
-					<mdb-dropdown-toggle
-						style="
+      <mdb-navbar-nav right>
+        <mdb-dropdown start>
+          <mdb-dropdown-toggle
+            style="
               -webkit-box-shadow: none;
               -moz-box-shadow: none;
               box-shadow: none;
               color: white;
             "
-						color="#03a9f4"
-						slot="toggle"
-						>{{auth.userEmail}}</mdb-dropdown-toggle
-					>
-					<mdb-dropdown-menu color="primary">
-						<mdb-dropdown-item
-							><router-link to="/Playlist"
-								>Playlist</router-link
-							></mdb-dropdown-item
-						>
-						<mdb-dropdown-item>
-							<a @click="logout" href="#">Logout</a>
-						</mdb-dropdown-item>
-					</mdb-dropdown-menu>
-				</mdb-dropdown>
-			</mdb-navbar-nav>
-		</mdb-navbar-toggler>
-	</mdb-navbar>
+            color="#03a9f4"
+            slot="toggle"
+            >{{ auth.userEmail }}</mdb-dropdown-toggle
+          >
+          <mdb-dropdown-menu color="primary">
+            <mdb-dropdown-item
+              ><router-link to="/Playlist"
+                >Playlist</router-link
+              ></mdb-dropdown-item
+            >
+            <mdb-dropdown-item>
+              <a @click="logout" href="#">Logout</a>
+            </mdb-dropdown-item>
+          </mdb-dropdown-menu>
+        </mdb-dropdown>
+      </mdb-navbar-nav>
+    </mdb-navbar-toggler>
+  </mdb-navbar>
 </template>
 
 <script>
 import {
-	mdbDropdown,
-	mdbDropdownToggle,
-	mdbDropdownMenu,
-	mdbDropdownItem,
-	mdbContainer,
-	mdbNavbar,
-	mdbNavbarBrand,
-	mdbNavbarToggler,
-	mdbNavbarNav,
-	mdbNavItem,
-	mdbFooter,
-	mdbRow,
-	mdbCol,
+  mdbDropdown,
+  mdbDropdownToggle,
+  mdbDropdownMenu,
+  mdbDropdownItem,
+  mdbContainer,
+  mdbNavbar,
+  mdbNavbarBrand,
+  mdbNavbarToggler,
+  mdbNavbarNav,
+  mdbNavItem,
+  mdbFooter,
+  mdbRow,
+  mdbCol,
 } from "mdbvue";
 import { Auth } from "@/services";
 
 export default {
-	name: "HelloWorld",
-	name: "FooterPage",
-	components: {
-		mdbNavbar,
-		mdbNavbarBrand,
-		mdbNavbarToggler,
-		mdbNavbarNav,
-		mdbNavItem,
-		mdbContainer,
-		mdbDropdown,
-		mdbDropdownToggle,
-		mdbDropdownMenu,
-		mdbDropdownItem,
-		mdbFooter,
-		mdbRow,
-		mdbCol,
-	},
-	data() {
-		return {
-      auth: Auth.state
+  name: "HelloWorld",
+  name: "FooterPage",
+  components: {
+    mdbNavbar,
+    mdbNavbarBrand,
+    mdbNavbarToggler,
+    mdbNavbarNav,
+    mdbNavItem,
+    mdbContainer,
+    mdbDropdown,
+    mdbDropdownToggle,
+    mdbDropdownMenu,
+    mdbDropdownItem,
+    mdbFooter,
+    mdbRow,
+    mdbCol,
+  },
+  data() {
+    return {
+      auth: Auth.state,
     };
-	},
-	methods: {
-		logout() {
-			Auth.logout();
-			this.$router.go();
-		},
-	},
+  },
+  methods: {
+    logout() {
+      Auth.logout();
+      this.$router.go();
+    },
+  },
 };
 </script>
