@@ -14,6 +14,8 @@
       <mdb-input label="Your password" v-model="password" type="password"/>
     </div>
     <div class="text-center">
+      <span v-if="showError" style="color:red;">Podaci su krivi</span> <br>
+      <span v-if="showErrorMail" style="color:red;">Unesite sva polja</span>
      <button class="h-40 mb-4 mt-3 btn btn-info" type="submit" style="width:375px;" >Sign-in</button>
     </div>
     <br><br><br><br>
@@ -21,7 +23,7 @@
 
   </form>
 
- <button class="h-40 mt-4 btn btn-light" style="width:375px;"> Create your account</button>
+ <router-link to="/Signup" class="h-40 mt-4 btn btn-light" style="width:375px;"> Create your account</router-link>
   </div>
   </div>
 
@@ -31,22 +33,31 @@
 import {Auth} from "@/services"
 
 export default {
+   name: 'Login',
   data(){
     return{
       email: '',
-      password: ''
+      password: '',
+      showError: false,
+      showErrorMail: false
     }
   },
   methods:{
     async login(){
+      this.showError = false
+      this.showErrorMail = false
       try{
+        if(this.email == "" || this.password == ""){
+           this.showErrorMail = true
+           
+        }
        let succes = await Auth.login(this.email, this.password)
         console.log('Rezultat prijave', succes)
         if (succes == true) {
          this.$router.replace({ name: 'Home' })
         }
       } catch (e){
-        console.log(e)
+        this.showError = true
       }
         
     },

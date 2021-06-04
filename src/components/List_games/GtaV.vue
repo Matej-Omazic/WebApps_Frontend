@@ -126,11 +126,11 @@
         </div>
      <!-- Comments -->    
        <div>  
-         <form @submit="add_commentv2">
+         <form @submit.prevent="add_commentv2">
                 <b-card class=" mx-auto" style="max-width: 900px; -webkit-box-shadow: none; -moz-box-shadow: none;box-shadow: none; ">
                     <b-card-text class="" style="max-width 200px; color:black; text-align:left;">
                          <p style="font-size:22px;">Comments</p>
-                         <p class="comm" v-for="komentari in komentari" :key="komentari._id" :values="komentari.comment">{{komentari.comment}} <br> by <b>{{komentari.author}}</b></p> 
+                         <p class="comm animate list-group-item list-group-item-action flex-column align-items-start" v-for="komentari in komentari" :key="komentari._id" :values="komentari.comment">{{komentari.comment}} <br> by <b>{{komentari.author}}</b></p> 
                       <mdb-input v-model="comment" type="textarea" outline inputClass="z-depth-1 p-3" placeholder="Write a comment..."/>  
                                        
                      </b-card-text>
@@ -154,10 +154,8 @@
   import Navbar from '@/components/Layout/Navbar'
   import Footer from '@/components/Layout/Footer'
   import { mdbInput } from 'mdbvue';
-  import {Games} from '@/services/index.js';
-  import {Komentari} from '@/services/index.js';
-  import {Service} from '@/services/index.js';
-  import {Playlist} from '@/services/index.js';
+  import {Games, Komentari, Service, Playlist, Auth} from '@/services/index.js';
+ 
  
 
   
@@ -173,6 +171,7 @@
        komentari:{},
        games_id: "",
        pomocna:"",
+      auth:Auth.state
       } 
     },
     components: {
@@ -211,16 +210,20 @@
             this.klik = 1;
             console.log('Spremljeni post', newlist.data);
       },
-
+       async refresh() {
+            let kom = await Komentari.getAll(this.komentari._id);
+            this.komentari.comment = kom.comment;
+        },
       async add_commentv2(){
             let comm = {
                 comment: this.comment,
                 game_id: "1001",
-                author: "Salenjak",
+                author: this.auth.userEmail,
             };
             let newpost = await Komentari.add(comm);
             console.log('Spremljeni post', newpost.data);
-            this.$router.push({ name: 'GtaV' });
+            this.refresh();
+            
       },
 
 
@@ -251,6 +254,34 @@
 </script>
 
 <style scoped>
+@-webkit-keyframes fade-in-fwd {
+    0% {
+        -webkit-transform: translateZ(-80px);
+        transform: translateZ(-80px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        opacity: 1;
+    }
+}
+@keyframes fade-in-fwd {
+    0% {
+        -webkit-transform: translateZ(-80px);
+        transform: translateZ(-80px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        opacity: 1;
+    }
+}
+.animate {
+    -webkit-animation: fade-in-fwd 1s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+    animation: fade-in-fwd 1s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
 hr {
     border: none;
     height: 2px;

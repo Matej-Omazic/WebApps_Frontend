@@ -36,9 +36,9 @@ export default {
         };
     },
     async mounted(){
-        console.log(this.id);
-
+        
         this.game = await Games.getOne(this.id);
+        console.log(this.id);
     },
     name: "All_games",
     components: {

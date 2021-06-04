@@ -21,7 +21,7 @@ const router = new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/login',
+      path: '/',
       name: 'Login',
       component: Login
 
@@ -74,7 +74,7 @@ const router = new Router({
       component: Cyberpunk
     },
     {
-      path: '/games:id',
+      path: '/Games/:id',
       props: true,
       name: 'All_games',
       component: All_games
@@ -84,12 +84,13 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-  const javneStranice = ["/login", "/Signup"];
+  const javneStranice = ["/", "/Signup"];
   const loginPotreban = !javneStranice.includes(to.path);
   const user = Auth.getUser();
+  //console.log("dal je ovo user", user)
 
   if (loginPotreban && !user) {
-  next("/login")
+  next("/")
   return;
   }
   next();

@@ -22,9 +22,9 @@
         <div class=" mx-auto" style="max-width: 900px;">
 
             <b-card-group deck style="margin: 0;">
-
-            <game-card v-for="game in games" :key="game.url" :info="game" />
-
+            <div @click="gotoDetails(game)" v-for="game in games" :key="game.id">
+            <game-card  :info="game" />
+            </div>
             </b-card-group>
             
             
@@ -59,6 +59,7 @@ import GameCard from '@/components/GameCard'
 import store from '@/store'
 import {Games} from '@/services/index.js';
 import _ from 'lodash';
+
 
 
   export default {
@@ -108,6 +109,9 @@ import _ from 'lodash';
             this.games = await Games.getAll(term)
 
             
+        },
+        gotoDetails(game) {
+            this.$router.push({ path: `Games/${game.id}` });
         }
     },
 
