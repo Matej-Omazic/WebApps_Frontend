@@ -225,7 +225,10 @@
             this.refresh();
             
       },
-
+      async removeComment(commentId) {
+            let comm = this.info.id;
+            await Posts.Comments.delete(postId, commentId);
+      },
 
       async pozoviCom(term){
         this.komentari = await Komentari.getAll(term)

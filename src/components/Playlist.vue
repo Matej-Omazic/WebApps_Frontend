@@ -20,7 +20,7 @@
             <div class="max-width: 900px; mt-4 mb-3">
 
             <b-card class="mx-auto text-left" style="width: 900px; -webkit-box-shadow:none; -moz-box-shadow:none; box-shadow:none; padding:0;">
-              <div v-for="lista in lista" :key="lista._id" ><router-link :to="lista.route"><img v-bind:src="lista.url" style="width:140px; height:180px;" /></router-link>
+              <div v-for="lista in lista" :key="lista._id" ><img v-bind:src="lista.url" style="width:140px; height:180px;" />
                <label> 
                         <p class="text-left ml-3">{{lista.name}}</p>
                         <p class="text-left ml-3">&#11088; {{lista.grade}}</p> 

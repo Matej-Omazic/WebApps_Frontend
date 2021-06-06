@@ -23,7 +23,8 @@ const router = new Router({
     {
       path: '/',
       name: 'Login',
-      component: Login
+      component: Login,
+      meta: { transition: 'fade-in-left' },
 
     },
     {
