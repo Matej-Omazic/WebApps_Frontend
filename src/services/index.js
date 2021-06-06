@@ -113,7 +113,7 @@ let Playlist = {
 	},
 
 	async getAll(lista) {
-		let response = await Service.get(`/Playlist?${lista}`);
+		let response = await Service.get(`/Playlist/${lista}`);
 		let data = response.data;
 		data = data.map((doc) => {
 			return {
@@ -201,7 +201,6 @@ let Contact = {
 	add(comm) {
 		return Service.post("/Contact", comm);
 	},
-
 };
 
 export { Service, Games, Komentari, Playlist, Auth, Contact };

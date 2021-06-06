@@ -29,7 +29,7 @@
 			</b-card>
 		</div>
 		<div>
-			<b-form v-if="!klik" @submit.prevent="add_plist">
+			<b-form @submit.prevent="add_plist()">
 				<b-card
 					class="mx-auto"
 					style="max-width: 900px; -webkit-box-shadow: none; -moz-box-shadow: none;box-shadow: none; "
@@ -42,25 +42,9 @@
 						<p style="margin:0;"><b>Stars:</b> {{ game.stars }}</p>
 					</b-card-text>
 					<div style="float:left; ">
-						<button class="add" type="submit">Add to playlist</button>
-					</div>
-				</b-card>
-			</b-form>
-
-			<b-form v-if="klik" @submit.prevent="add_plist">
-				<b-card
-					class="mx-auto"
-					style="max-width: 900px; -webkit-box-shadow: none; -moz-box-shadow: none;box-shadow: none; "
-				>
-					<b-card-text
-						class=""
-						style="max-width 200px; color:black; text-align:left;"
-					>
-						<p style="margin:0;"><b>Writer:</b> {{ game.writer }}</p>
-						<p style="margin:0;"><b>Stars:</b> {{ game.stars }}</p>
-					</b-card-text>
-					<div style="float:left; ">
-						<button class="del" type="submit">Clear the playlist</button>
+						<button class="add" type="submit">
+							Add to playlist
+						</button>
 					</div>
 				</b-card>
 			</b-form>
@@ -224,7 +208,7 @@
 								:key="komentari.id"
 							>
 								{{ komentari.comment }} <br />
-								by <b>{{ komentari.author }}</b>
+								by <b style="color:#0c99e0;">{{ komentari.author }}</b>
 							</a>
 						</div>
 
@@ -289,8 +273,9 @@ export default {
 				rate: this.game.rank,
 				author: this.auth.userEmail,
 			};
+
 			let newlist = await Playlist.add(plist);
-			this.klik = 1;
+
 			console.log("Spremljeni post", newlist.data);
 		},
 		async add_comment() {
@@ -347,33 +332,5 @@ hr {
 	text-align: center;
 	height: 35px;
 	border-radius: 4px;
-}
-@-webkit-keyframes fade-in-fwd {
-	0% {
-		-webkit-transform: translateZ(-80px);
-		transform: translateZ(-80px);
-		opacity: 0;
-	}
-	100% {
-		-webkit-transform: translateZ(0);
-		transform: translateZ(0);
-		opacity: 1;
-	}
-}
-@keyframes fade-in-fwd {
-	0% {
-		-webkit-transform: translateZ(-80px);
-		transform: translateZ(-80px);
-		opacity: 0;
-	}
-	100% {
-		-webkit-transform: translateZ(0);
-		transform: translateZ(0);
-		opacity: 1;
-	}
-}
-.animate {
-	-webkit-animation: fade-in-fwd 1s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-	animation: fade-in-fwd 1s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 </style>

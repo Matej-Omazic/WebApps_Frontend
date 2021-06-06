@@ -73,9 +73,8 @@ export default {
 		async register(event) {
 			if (this.email == "" || this.username == "" || this.password == "") {
 				event.target.classList.add("was-validated");
-				return this.feedback;
+				return (this.feedback = "Wrong e-mail or password");
 			}
-			this.feedback = "Wrong e-mail or password";
 
 			try {
 				let succes = await Auth.register(
@@ -85,9 +84,7 @@ export default {
 				);
 				console.log("Rezultat registracije", succes);
 				this.$router.push({ name: "Login" });
-			} catch (e) {
-				this.feedback;
-			}
+			} catch (e) {}
 		},
 	},
 };
