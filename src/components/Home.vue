@@ -27,7 +27,7 @@
 				<div class="column">
 					<router-link to="Games/60ba3ace5b55f53bcb56ea1f"
 						><img
-							src="https://i.ibb.co/CKFBPBv/Gta5.jpg"
+							src="https://i.ibb.co/wwmFrfF/Gta5.jpg"
 							alt="GtaV"
 							class="mb-3"
 							style="width:140px; height:180px;"
@@ -36,7 +36,7 @@
 				<div class="column">
 					<router-link to="Games/60ba3fbd5b55f53bcb5c5e6b">
 						<img
-							src="https://i.ibb.co/R7tPbpL/Zelda.jpg"
+							src="https://i.ibb.co/Qpm3frZ/Zelda.jpg"
 							alt="Zelda"
 							class="mb-3"
 							style="width:140px; height:180px;"

@@ -20,6 +20,11 @@
             About
           </mdb-nav-item></router-link
         >
+        <router-link style="color: white" to="/Contact"
+          ><mdb-nav-item class="mr-5" href="#">
+            Contact
+          </mdb-nav-item></router-link
+        >
       </mdb-navbar-nav>
 
       <mdb-navbar-nav right>

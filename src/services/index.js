@@ -197,4 +197,11 @@ let Auth = {
 	},
 };
 
-export { Service, Games, Komentari, Playlist, Auth };
+let Contact = {
+	add(comm) {
+		return Service.post("/Contact", comm);
+	},
+
+};
+
+export { Service, Games, Komentari, Playlist, Auth, Contact };

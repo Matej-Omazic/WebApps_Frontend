@@ -11,7 +11,7 @@
 					<mdb-input
 						v-model="email"
 						type="email"
-						id="validationCustom02"
+						id="validationCustom01"
 						label="E-mail"
 						required
 						invalidFeedback="Please use the valid e-mail address "
@@ -69,9 +69,9 @@ export default {
 		async login(event) {
 			if (this.email == "" || this.password == "") {
 				event.target.classList.add("was-validated");
-				return this.feedback;
+				return this.feedback = "Wrong e-mail or password";
 			}
-			this.feedback = "Wrong e-mail or password";
+			this.feedback = "";
 			try {
 				let succes = await Auth.login(this.email, this.password);
 				console.log("Rezultat prijave", succes);
@@ -79,7 +79,7 @@ export default {
 					this.$router.replace({ path: "/home" });
 				}
 			} catch (e) {
-				this.feedback;
+				this.feedback = "Wrong e-mail or password";
 			}
 		},
 	},

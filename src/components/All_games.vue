@@ -282,10 +282,6 @@ export default {
 		this.game = await Games.getOne(this.id);
 	},
 	methods: {
-		async refresh() {
-			let kom = await Komentari.getAll(this.id);
-			this.komentari.id = kom.komentari;
-		},
 		async add_plist() {
 			let plist = {
 				img_url: this.game.url,
@@ -304,7 +300,6 @@ export default {
 				author: this.auth.userEmail,
 			};
 			let newlist = await Komentari.add(comm);
-			this.refresh();
 			console.log("Spremljeni post", newlist.data);
 		},
 		async pozoviCom() {

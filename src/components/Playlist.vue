@@ -10,7 +10,7 @@
                 <br><br>
                 <p class="text-left ml-3" style="font-size:16px;">What is a Playlist? It's a simply list of games, also helps you save <br> games that you would like to play or explore even more</p>
                 <hr style="background-color: white;">
-                <p class="ml-3" style="font-size:18px; float: left;">Title </p> <p class="mr-3" style="font-size:18px; float: right;">Private playlist 🔒</p>
+                <p class="ml-3" style="font-size:18px; float: left;">Titles </p> <p class="mr-3" style="font-size:18px; float: right;">Private playlist 🔒</p>
 
         </div>
 
@@ -63,7 +63,6 @@
   import Navbar from '@/components/Layout/Navbar'
   import Footer from '@/components/Layout/Footer'
   import GameCard from '@/components/GameCard'
-  import Zelda from '@/components/List_games/Zelda'
   import {Playlist} from '@/services/index.js';
   import {Service} from '@/services/index.js';
   
@@ -81,7 +80,6 @@
       Navbar,
       Footer,
       GameCard,
-      Zelda,
       Playlist,
       Service
       
