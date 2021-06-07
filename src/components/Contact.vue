@@ -1,59 +1,59 @@
 <template>
-	<div>
-		<Navbar />
+  <div>
+    <Navbar />
 
-		<mdb-container class="mt-5">
-			<mdb-card>
-				<mdb-card-title class="mt-4 h2">Contact us</mdb-card-title>
-				<mdb-card-body>
-					<mdb-card-text class="pr-5 pl-5" mr-4 ml-4
-						>Do you have any questions? Please do not hesitate to contact us
-						directly. Our team will get back to you within a matter of hours to
-						help you.</mdb-card-text
-					>
-					<form
-						class="needs-validation"
-						novalidate
-						@submit="add_contact"
-						style="display: inline;"
-					>
-						<mdb-input
-							type="textarea"
-							label="Your message"
-							v-model="message"
-							required
-						/>
+    <mdb-container class="mt-5">
+      <mdb-card>
+        <mdb-card-title class="mt-4 h2">Contact us</mdb-card-title>
+        <mdb-card-body>
+          <mdb-card-text class="pr-5 pl-5" mr-4 ml-4
+            >Do you have any questions? Please do not hesitate to contact us
+            directly. Our team will get back to you within a matter of hours to
+            help you.</mdb-card-text
+          >
+          <form
+            class="needs-validation"
+            novalidate
+            @submit="add_contact"
+            style="display: inline;"
+          >
+            <mdb-input
+              type="textarea"
+              label="Your message"
+              v-model="message"
+              required
+            />
 
-						<div class="mx-auto mt-4">
-							<mdb-icon icon="map-marker-alt" size="2x" />
-							<p class="paragraf mr-3" style=" width:120px; font-size:18px;">
-								Pula, Croatia
-							</p>
+            <div class="mx-auto mt-4">
+              <mdb-icon icon="map-marker-alt" size="2x" />
+              <p class="paragraf mr-3" style=" width:120px; font-size:18px;">
+                Pula, Croatia
+              </p>
 
-							<mdb-icon icon="phone" size="2x" />
-							<p class="paragraf mr-3" style=" width:120px; font-size:18px;">
-								+ 099 567 6524
-							</p>
+              <mdb-icon icon="phone" size="2x" />
+              <p class="paragraf mr-3" style=" width:120px; font-size:18px;">
+                + 099 567 6524
+              </p>
 
-							<mdb-icon icon="envelope" size="2x" />
-							<p class="paragraf mr-3" style=" width:160px; font-size:18px;">
-								gamedb@games.com
-							</p>
-						</div>
-						<button
-							type="submit"
-							class="btn btn-outline-primary comm mx-auto mt-4 "
-							data-mdb-ripple-color="dark"
-						>
-							Comment
-						</button>
-					</form>
-				</mdb-card-body>
-			</mdb-card>
-		</mdb-container>
+              <mdb-icon icon="envelope" size="2x" />
+              <p class="paragraf mr-3" style=" width:160px; font-size:18px;">
+                gamedb@games.com
+              </p>
+            </div>
+            <button
+              type="submit"
+              class="btn btn-outline-primary comm mx-auto mt-4 "
+              data-mdb-ripple-color="dark"
+            >
+              Send a message
+            </button>
+          </form>
+        </mdb-card-body>
+      </mdb-card>
+    </mdb-container>
 
-		<Footer />
-	</div>
+    <Footer />
+  </div>
 </template>
 
 <script>
@@ -61,67 +61,67 @@ import Navbar from "@/components/Layout/Navbar";
 import Footer from "@/components/Layout/Footer";
 import { Service, Auth, Contact } from "@/services/index.js";
 import {
-	mdbContainer,
-	mdbInput,
-	mdbCard,
-	mdbCardHeader,
-	mdbCardTitle,
-	mdbCardText,
-	mdbCardBody,
-	mdbIcon,
-	mdbBtn,
-	mdbRow,
-	mdbCol,
+  mdbContainer,
+  mdbInput,
+  mdbCard,
+  mdbCardHeader,
+  mdbCardTitle,
+  mdbCardText,
+  mdbCardBody,
+  mdbIcon,
+  mdbBtn,
+  mdbRow,
+  mdbCol,
 } from "mdbvue";
 
 export default {
-	name: "Contact",
+  name: "Contact",
 
-	mounted() {
-		window.scrollTo(0, 0);
-	},
-	components: {
-		mdbContainer,
-		mdbInput,
-		mdbCard,
-		mdbCardHeader,
-		mdbCardTitle,
-		mdbCardBody,
-		mdbCardText,
-		mdbIcon,
-		mdbBtn,
-		mdbRow,
-		mdbCol,
-		Navbar,
-		Footer,
-	},
-	data() {
-		return {
-			message: "",
-			auth: Auth.state,
-		};
-	},
-	methods: {
-		submitForm(event) {
-			event.target.classList.add("was-validated");
-		},
-		async add_contact() {
-			let contact_object = {
-				message: this.message,
-				author: this.auth.userEmail,
-			};
-			let newlist = await Contact.add(contact_object);
-			console.log("Spremljeni post", newlist.data);
-		},
-	},
+  mounted() {
+    window.scrollTo(0, 0);
+  },
+  components: {
+    mdbContainer,
+    mdbInput,
+    mdbCard,
+    mdbCardHeader,
+    mdbCardTitle,
+    mdbCardBody,
+    mdbCardText,
+    mdbIcon,
+    mdbBtn,
+    mdbRow,
+    mdbCol,
+    Navbar,
+    Footer,
+  },
+  data() {
+    return {
+      message: "",
+      auth: Auth.state,
+    };
+  },
+  methods: {
+    submitForm(event) {
+      event.target.classList.add("was-validated");
+    },
+    async add_contact() {
+      let contact_object = {
+        message: this.message,
+        author: this.auth.userEmail,
+      };
+      let newlist = await Contact.add(contact_object);
+      console.log("Spremljeni post", newlist.data);
+    },
+  },
 };
 </script>
 
 <style scoped>
 .container {
-	text-align: center;
+  text-align: center;
 }
 .paragraf {
-	display: inline !important;
+  display: inline !important;
 }
 </style>

@@ -29,6 +29,9 @@ let Games = {
 	add(game) {
 		return Service.game("/games", game);
 	},
+	add_game(whole_game) {
+		return Service.post("/games", whole_game);
+	},
 
 	async getOne(id) {
 		let response = await Service.get(`/games/${id}`);
@@ -159,6 +162,19 @@ let Auth = {
 	getUser() {
 		return JSON.parse(localStorage.getItem("user"));
 	},
+
+	async getOne(username) {
+		let response = await Service.get(`/users/${username}`);
+		let element = response.data;
+	
+		return {
+			id: element._id,
+			email: element.email,
+			username: element.username,
+			password: element.password,
+		}
+	},
+
 	authenticated() {
 		let user = Auth.getUser();
 		if (user && user.token) {

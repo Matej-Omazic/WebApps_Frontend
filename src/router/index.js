@@ -5,11 +5,11 @@ import Signup from '@/components/Prijava/Signup'
 import Home from '@/components/Home'
 import About from '@/components/About'
 import Games from '@/components/Games'
-import GtaV from '@/components/List_games/GtaV'
 import Playlist from '@/components/Playlist'
 import All_games from '@/components/All_games'
 import { Auth } from "@/services"
 import Contact from '@/components/Contact'
+import Add_game from '@/components/Add_game'
 
 
 Vue.use(Router);
@@ -48,11 +48,6 @@ const router = new Router({
       component: Games
     },
     {
-      path: '/GtaV',
-      name: 'GtaV',
-      component: GtaV
-    },
-    {
       path: '/Playlist',
       name: 'Playlist',
       component: Playlist
@@ -67,6 +62,11 @@ const router = new Router({
       path: '/Contact',
       name: 'Contact',
       component: Contact
+    },
+    {
+      path: '/add_game',
+      name: 'Add_game',
+      component: Add_game
     },
 
   ]
