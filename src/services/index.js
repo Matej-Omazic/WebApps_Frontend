@@ -124,9 +124,22 @@ let Playlist = {
 				name: doc.game_name,
 				grade: doc.rate,
 				author: doc.author,
+				game_id: doc.game_id,
 			};
 		});
 		return data;
+	},
+	async getOne(lista) {
+		let response = await Service.get(`/Playlist_c/${lista}`);
+		let doc = response.data;
+
+		return {
+			url: doc.img_url,
+			name: doc.game_name,
+			grade: doc.rate,
+			author: doc.author,
+			game_id: doc.game_id,
+		};
 	},
 };
 
@@ -166,13 +179,13 @@ let Auth = {
 	async getOne(username) {
 		let response = await Service.get(`/users/${username}`);
 		let element = response.data;
-	
+
 		return {
 			id: element._id,
 			email: element.email,
 			username: element.username,
 			password: element.password,
-		}
+		};
 	},
 
 	authenticated() {
