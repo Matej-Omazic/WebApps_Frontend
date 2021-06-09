@@ -2,7 +2,7 @@
   <div>
     <Navbar />
 
-    <div class="mx-auto" style="width: 500px;">
+    <div v-if="a_username.admin" class="mx-auto" style="width: 500px;">
       <form @submit="add_game">
         <mdb-input label="Image url" size="md" v-model="img_url" />
         <mdb-input label="Name of the game" size="md" v-model="name" />
@@ -57,6 +57,15 @@
       <br /><br />
     </div>
 
+    <div v-if="!a_username.admin">
+      <br /><img
+        src="https://i.ibb.co/x8grpxd/404-error-design-with-sign-23-2147735302.jpg"
+        alt="Stop"
+        class="mb-3"
+        style="width:626px; height:588px;"
+      />
+    </div>
+
     <Footer />
   </div>
 </template>
@@ -64,7 +73,7 @@
 <script>
 import Navbar from "@/components/Layout/Navbar";
 import Footer from "@/components/Layout/Footer";
-import { Games, Service, Auth } from "@/services/index.js";
+import { Games, Service, Auth, a_Auth } from "@/services/index.js";
 import {
   mdbContainer,
   mdbInput,
@@ -134,10 +143,30 @@ export default {
       cast8: "",
       cast9: "",
       cast10: "",
+      ////////////
+      auth: Auth.state,
+      a_auth: a_Auth.state,
+      username: "",
+      a_username: "",
     };
   },
 
   methods: {
+    async get_username() {
+      try {
+        this.username = await Auth.getOne(this.auth.userEmail);
+      } catch (e) {
+        console.log(
+          "Error is happening because your are logged in as one type of the user and db is trying to call the other one too, Exception: ",
+          e
+        );
+      }
+    },
+
+    async a_get_username() {
+      this.a_username = await a_Auth.a_getOne(this.a_auth.userEmail);
+    },
+
     async add_game() {
       let whole_game = {
         img_url: this.img_url,
@@ -173,6 +202,11 @@ export default {
       let newlist = await Games.add_game(whole_game);
       console.log("Spremljeni post", newlist.data);
     },
+  },
+
+  created() {
+    this.get_username();
+    this.a_get_username();
   },
 };
 </script>

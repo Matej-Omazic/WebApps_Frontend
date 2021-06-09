@@ -7,10 +7,11 @@ import About from "@/components/About";
 import Games from "@/components/Games";
 import Playlist from "@/components/Playlist";
 import All_games from "@/components/All_games";
-import { Auth } from "@/services";
+import { Auth, a_Auth } from "@/services";
 import Contact from "@/components/Contact";
 import Add_game from "@/components/Add_game";
-import Playlist2 from "@/components/Playlist2";
+import Login_a from "@/components/Prijava/Login_a";
+import Signup_a from "@/components/Prijava/Signup_a";
 
 Vue.use(Router);
 
@@ -22,7 +23,6 @@ const router = new Router({
 			path: "/",
 			name: "Login",
 			component: Login,
-			meta: { transition: "fade-in-left" },
 		},
 		{
 			path: "/Signup",
@@ -50,13 +50,6 @@ const router = new Router({
 			path: "/Playlist",
 			name: "Playlist",
 			component: Playlist,
-			children: [
-				{
-					name: "Playlist2",
-					path: "/Playlist",
-					component: Playlist2,
-				},
-			],
 		},
 		{
 			path: "/Games/:id",
@@ -74,17 +67,28 @@ const router = new Router({
 			name: "Add_game",
 			component: Add_game,
 		},
+		{
+			path: "/Login_a",
+			name: "Login_a",
+			component: Login_a,
+		},
+		{
+			path: "/Signup_a",
+			name: "Signup_a",
+			component: Signup_a,
+		},
 	],
 });
 
 router.beforeEach((to, from, next) => {
-	const javneStranice = ["/", "/Signup"];
+	const javneStranice = ["/", "/Signup", "/Login_a", "/Signup_a"];
 	const loginPotreban = !javneStranice.includes(to.path);
 	const user = Auth.getUser();
+	const admin = a_Auth.getUser();
 	//console.log("dal je ovo user", user)
 
-	if (loginPotreban && !user) {
-		next("/");
+	if (loginPotreban && !user && !admin) {
+		next("/","/Login_a" );
 		return;
 	}
 	next();

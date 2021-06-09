@@ -12,17 +12,22 @@
             >Home</mdb-nav-item
           ></router-link
         >
-        <router-link style="color: white" to="/Games"
+        <router-link v-if="!a_username.admin" style="color: white" to="/Games"
           ><mdb-nav-item class="mr-5" href="#">Games</mdb-nav-item></router-link
         >
-        <router-link style="color: white" to="/About"
+        <router-link v-if="!a_username.admin" style="color: white" to="/About"
           ><mdb-nav-item class="mr-5" href="#">
             About
           </mdb-nav-item></router-link
         >
-        <router-link style="color: white" to="/Contact"
+        <router-link v-if="!a_username.admin" style="color: white" to="/Contact"
           ><mdb-nav-item class="mr-5" href="#">
             Contact
+          </mdb-nav-item></router-link
+        >
+        <router-link v-if="a_username.admin" style="color: white" to="/add_game"
+          ><mdb-nav-item class="mr-5" href="#">
+            Add a game
           </mdb-nav-item></router-link
         >
       </mdb-navbar-nav>
@@ -30,6 +35,8 @@
       <mdb-navbar-nav right>
         <mdb-dropdown start>
           <mdb-dropdown-toggle
+            v-if="!a_username.admin"
+            class=""
             style="
               -webkit-box-shadow: none;
               -moz-box-shadow: none;
@@ -38,16 +45,37 @@
             "
             color="#03a9f4"
             slot="toggle"
-            >{{ username.username }}</mdb-dropdown-toggle
+            >(USER){{ username.username }}</mdb-dropdown-toggle
+          >
+
+          <mdb-dropdown-toggle
+            v-if="a_username.admin"
+            class=""
+            style="
+              -webkit-box-shadow: none;
+              -moz-box-shadow: none;
+              box-shadow: none;
+              color: white;
+            "
+            color="#03a9f4"
+            slot="toggle"
+            >(Moderator){{ a_username.username }}</mdb-dropdown-toggle
           >
           <mdb-dropdown-menu color="primary">
-            <mdb-dropdown-item
+            <mdb-dropdown-item v-if="!a_username.admin"
               ><router-link to="/Playlist"
                 >Playlist</router-link
               ></mdb-dropdown-item
             >
             <mdb-dropdown-item>
-              <a @click="logout" href="#">Logout</a>
+              <a
+                @click="
+                  logout();
+                  a_logout();
+                "
+                href="#"
+                >Logout</a
+              >
             </mdb-dropdown-item>
           </mdb-dropdown-menu>
         </mdb-dropdown>
@@ -72,7 +100,7 @@ import {
   mdbRow,
   mdbCol,
 } from "mdbvue";
-import { Auth } from "@/services";
+import { Auth, a_Auth } from "@/services";
 
 export default {
   name: "HelloWorld",
@@ -95,22 +123,41 @@ export default {
   data() {
     return {
       auth: Auth.state,
+      a_auth: a_Auth.state,
       username: "",
+      a_username: "",
     };
   },
   methods: {
+    async a_get_username() {
+      this.a_username = await a_Auth.a_getOne(this.a_auth.userEmail);
+    },
+
     async get_username() {
-      this.username = await Auth.getOne(this.auth.userEmail);
+      try {
+        this.username = await Auth.getOne(this.auth.userEmail);
+      } catch (e) {
+        console.log(
+          "Error is happening because your are logged in as one type of the user and db is trying to call the other one too, Exception: ",
+          e
+        );
+      }
     },
 
     logout() {
       Auth.logout();
       this.$router.go();
     },
+
+    a_logout() {
+      a_Auth.a_logout();
+      this.$router.go();
+    },
   },
 
   created() {
     this.get_username();
+    this.a_get_username();
   },
 };
 </script>

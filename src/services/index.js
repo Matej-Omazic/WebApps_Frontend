@@ -226,10 +226,94 @@ let Auth = {
 	},
 };
 
+let a_Auth = {
+	async register1(email, username, password, admin) {
+		let response = await Service.post("/admins", {
+			email: email,
+			username: username,
+			password: password,
+			admin: admin
+		});
+
+		let user_a = response.data;
+
+		localStorage.setItem("admin", JSON.stringify(user_a));
+
+		return true;
+	},
+
+	async login1(email, password) {
+		let response = await Service.post("/a_auth", {
+			email: email,
+			password: password,
+		});
+		let user_a = response.data;
+
+		localStorage.setItem("admin", JSON.stringify(user_a));
+		return true;
+	},
+	a_logout() {
+		localStorage.removeItem("admin");
+	},
+	getUser() {
+		return JSON.parse(localStorage.getItem("admin"));
+	},
+
+	async a_getOne(username) {
+		let response = await Service.get(`/admins/${username}`);
+		let element = response.data;
+
+		return {
+			id: element._id,
+			email: element.email,
+			username: element.username,
+			password: element.password,
+			admin: element.admin
+		};
+	},
+
+	authenticated() {
+		let user_a = a_Auth.getUser();
+		if (user_a && user_a.token) {
+			return true;
+		} else {
+			return false;
+		}
+	},
+	state: {
+		get authenticated() {
+			return a_Auth.authenticated();
+		},
+		get userEmail() {
+			let user_a = a_Auth.getUser();
+			if (user_a) {
+				return user_a.email;
+			}
+		},
+	},
+
+	getToken() {
+		let user_a = a_Auth.getUser();
+		if (user_a && user_a.token) {
+			return user_a.token;
+		} else {
+			return false;
+		}
+	},
+
+	prijavljen() {
+		let user_a = a_Auth.getUser();
+		if (user_a && user_a.token) {
+			return true;
+		}
+		return false;
+	},
+};
+
 let Contact = {
 	add(comm) {
 		return Service.post("/Contact", comm);
 	},
 };
 
-export { Service, Games, Komentari, Playlist, Auth, Contact };
+export { Service, Games, Komentari, Playlist, Auth, Contact, a_Auth };

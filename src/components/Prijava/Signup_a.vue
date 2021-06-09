@@ -5,7 +5,7 @@
       class="container login mx-auto "
       style="width:500px; height:600px; border-color:gray; border-style:solid;"
     >
-      <form novalidate @submit.prevent="register">
+      <form novalidate @submit.prevent="register1">
         <p class="text-center mb-2 mt-5" style="font-size:35px;">
           Create account
         </p>
@@ -54,33 +54,35 @@
 </template>
 
 <script>
-import { Auth } from "@/services";
+import { a_Auth } from "@/services";
 
 export default {
-  name: "Signup",
+  name: "Signup_a",
   data() {
     return {
       email: "",
       username: "",
       password: "",
+      admin: true,
       feedback: "",
     };
   },
   methods: {
-    async register(event) {
+    async register1(event) {
       if (this.email == "" || this.username == "" || this.password == "") {
         event.target.classList.add("was-validated");
         return (this.feedback = "Wrong e-mail or password");
       }
 
       try {
-        let succes = await Auth.register(
+        let succes = await a_Auth.register1(
           this.email,
           this.username,
-          this.password
+          this.password,
+          this.admin
         );
         console.log("Rezultat registracije", succes);
-        this.$router.push({ name: "Login" });
+        this.$router.push({ name: "Login_a" });
       } catch (e) {}
     },
   },
