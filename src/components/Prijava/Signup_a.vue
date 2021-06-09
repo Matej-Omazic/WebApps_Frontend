@@ -46,7 +46,11 @@
         <h5 class="mx-auto"><span>Already have an account?</span></h5>
       </form>
 
-      <router-link class="h-40 mt-4 btn btn-light" style="width:375px; " to="/">
+      <router-link
+        class="h-40 mt-4 btn btn-light"
+        style="width:375px; "
+        to="/Login_a"
+      >
         Sign-in</router-link
       >
     </div>
