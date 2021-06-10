@@ -9,6 +9,7 @@ import Playlist from "@/components/Playlist";
 import All_games from "@/components/All_games";
 import { Auth, a_Auth } from "@/services";
 import Contact from "@/components/Contact";
+import Account from "@/components/Account";
 import Add_game from "@/components/Add_game";
 import Login_a from "@/components/Prijava/Login_a";
 import Signup_a from "@/components/Prijava/Signup_a";
@@ -63,6 +64,11 @@ const router = new Router({
 			component: Contact,
 		},
 		{
+			path: "/Account",
+			name: "Account",
+			component: Account,
+		},
+		{
 			path: "/add_game",
 			name: "Add_game",
 			component: Add_game,
@@ -88,7 +94,7 @@ router.beforeEach((to, from, next) => {
 	//console.log("dal je ovo user", user)
 
 	if (loginPotreban && !user && !admin) {
-		next("/","/Login_a" );
+		next("/", "/Login_a");
 		return;
 	}
 	next();

@@ -105,6 +105,7 @@ let Komentari = {
 				comment: doc.comment,
 				game_id: doc.game_id,
 				author: doc.author,
+				author_id: doc.author_id,
 			};
 		});
 		return data;
@@ -224,6 +225,18 @@ let Auth = {
 		}
 		return false;
 	},
+	async changePassword(old_password, new_password) {
+		let response = await Service.patch("/users", {
+			old_password: old_password,
+			new_password: new_password,
+		});
+		console.log("respone", response);
+		let user = response.data;
+
+		localStorage.setItem("user", JSON.stringify(user));
+
+		return true;
+	},
 };
 
 let a_Auth = {
@@ -232,7 +245,7 @@ let a_Auth = {
 			email: email,
 			username: username,
 			password: password,
-			admin: admin
+			admin: admin,
 		});
 
 		let user_a = response.data;
@@ -268,7 +281,7 @@ let a_Auth = {
 			email: element.email,
 			username: element.username,
 			password: element.password,
-			admin: element.admin
+			admin: element.admin,
 		};
 	},
 

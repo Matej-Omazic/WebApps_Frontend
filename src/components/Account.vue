@@ -1,71 +1,10 @@
 <template>
 	<div>
 		<Navbar />
-		<div v-if="!a_username.admin">
-			<mdb-container class="mt-5">
-				<mdb-card>
-					<mdb-card-title class="mt-4 h2">Contact us</mdb-card-title>
-					<mdb-card-body>
-						<mdb-card-text class="pr-5 pl-5" mr-4 ml-4
-							>Do you have any questions? Please do not hesitate to contact us
-							directly. Our team will get back to you within a matter of hours
-							to help you.</mdb-card-text
-						>
-						<form
-							class="needs-validation"
-							novalidate
-							@submit="add_contact"
-							style="display: inline;"
-						>
-							<mdb-input
-								type="textarea"
-								label="Your message"
-								v-model="message"
-								required
-							/>
 
-							<div class="mx-auto mt-4">
-								<mdb-icon icon="map-marker-alt" size="2x" />
-								<p class="paragraf mr-3" style=" width:120px; font-size:18px;">
-									Pula, Croatia
-								</p>
-
-								<mdb-icon icon="phone" size="2x" />
-								<p class="paragraf mr-3" style=" width:120px; font-size:18px;">
-									+ 099 567 6524
-								</p>
-
-								<mdb-icon icon="envelope" size="2x" />
-								<p class="paragraf mr-3" style=" width:160px; font-size:18px;">
-									gamedb@games.com
-								</p>
-							</div>
-							<button
-								type="submit"
-								class="btn btn-outline-primary comm mx-auto mt-4 "
-								data-mdb-ripple-color="dark"
-							>
-								Send a message
-							</button>
-						</form>
-					</mdb-card-body>
-					<p style="color:red">{{ feedback }}</p>
-				</mdb-card>
-			</mdb-container>
-		</div>
-
-		<div v-if="a_username.admin">
-			<br /><img
-				src="https://i.ibb.co/x8grpxd/404-error-design-with-sign-23-2147735302.jpg"
-				alt="Stop"
-				class="mb-3"
-				style="width:626px; height:588px;"
-			/>
-		</div>
-		<h1>Change password</h1>
 		<div
-			class="container mx-auto "
-			style="width:500px; height:400px; border-color:gray; border-style:solid;"
+			class="container mx-auto mt-3 "
+			style="width:500px; height:auto; min-height:400px; border-color:gray; border-style:solid;"
 		>
 			<form novalidate @submit.prevent="changePass" class="tekst">
 				<p class="text-center mb-2 mt-5" style="font-size:35px;">
@@ -87,6 +26,7 @@
 						invalidFeedback="Please enter the correct password"
 						style="margin-bottom:15px;"
 					/>
+					<p style="color:red; margin:0;">{{ feedback1 }}</p>
 					<button
 						class="h-40  mt-2 btn btn-info"
 						type="submit"
@@ -94,7 +34,6 @@
 					>
 						Change your password
 					</button>
-					<p style="color:red;">{{ feedback1 }}</p>
 				</div>
 			</form>
 		</div>
@@ -105,7 +44,7 @@
 <script>
 import Navbar from "@/components/Layout/Navbar";
 import Footer from "@/components/Layout/Footer";
-import { Service, Auth, Contact, a_Auth } from "@/services/index.js";
+import { Service, Auth, a_Auth } from "@/services/index.js";
 import {
 	mdbContainer,
 	mdbInput,
@@ -121,7 +60,7 @@ import {
 } from "mdbvue";
 
 export default {
-	name: "Contact",
+	name: "Account",
 
 	mounted() {
 		window.scrollTo(0, 0);
@@ -158,19 +97,6 @@ export default {
 	methods: {
 		submitForm(event) {
 			event.target.classList.add("was-validated");
-		},
-		async add_contact(e) {
-			let contact_object = {
-				message: this.message,
-				author: this.auth.userEmail,
-			};
-			if (this.message == "") {
-				this.feedback = "Message must be filled out";
-				e.preventDefault();
-			} else {
-				let newlist = await Contact.add(contact_object);
-				console.log("Spremljeni post", newlist.data);
-			}
 		},
 		async changePass(event) {
 			if (this.old_password1 == "" || this.new_password2 == "") {

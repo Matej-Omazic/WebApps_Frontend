@@ -3,7 +3,7 @@
 		<img src="@/assets/Gamepad.png" style="float:center" />
 		<div
 			class="container login mx-auto "
-			style="width:500px; height:600px; border-color:gray; border-style:solid;"
+			style="width:500px; height:auto; min-height:550px border-color:gray; border-style:solid;"
 		>
 			<form novalidate @submit.prevent="login" class="tekst">
 				<p class="text-center mb-2 mt-5" style="font-size:35px;">Sign in</p>
@@ -56,7 +56,7 @@
 			>
 				Create your account</router-link
 			>
-			<p class="mt-2">
+			<p class="mt-2 mb-4">
 				You want to create account as moderator? Click
 				<a href="Signup_a">here</a>
 			</p>
@@ -75,6 +75,7 @@ export default {
 			feedback: "",
 		};
 	},
+
 	methods: {
 		async login(event) {
 			if (this.email == "" || this.password == "") {

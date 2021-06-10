@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<Navbar />
-		<div v-if="!a_username.admin">
+		<div v-if="pushMod()">
 			<div
 				class="mx-auto mt-5"
 				style=" max-width:900px; height:246px; background-color:#eceff1 ;"
@@ -22,19 +22,26 @@
 			</div>
 
 			<form>
-				<div class="max-width: 900px; mt-4 mb-3">
+				<div class="max-width: 900px; mt-4 mb-3  ">
 					<b-card
 						class="mx-auto text-left"
 						style="width: 900px; -webkit-box-shadow:none; -moz-box-shadow:none; box-shadow:none; padding:0;"
 					>
-						<div v-for="lista in lista" :key="lista._id">
+						<div transition="bounce" v-for="lista in lista" :key="lista._id">
 							<img v-bind:src="lista.url" style="width:140px; height:180px;" />
 							<label>
 								<p class="text-left ml-3">{{ lista.name }}</p>
 								<p class="text-left ml-3">&#11088; {{ lista.grade }}</p>
 							</label>
-							<button style="float:right" @click="del_plist(lista.name)">
-								Reši
+							<button
+								class="mt-5"
+								style=" float:right; background-color:white;border: none;outline: none;"
+								@click.prevent="del_plist(lista.name)"
+							>
+								<span class="trash">
+									<span></span>
+									<i></i>
+								</span>
 							</button>
 							<hr style="background-color:#c2c2c2" />
 						</div>
@@ -99,6 +106,11 @@ export default {
 				this.pozoviList();
 			});
 		},
+		pushMod() {
+			if (this.a_username.admin) {
+				this.$router.replace({ path: "/home" });
+			}
+		},
 
 		async get_username() {
 			try {
@@ -116,13 +128,19 @@ export default {
 			}
 		},
 	},
+	beforeMount() {
+		this.pushMod();
+	},
+
 	mounted() {
 		window.scrollTo(0, 0);
+		this.pushMod();
 	},
 	created() {
 		this.pozoviList();
 		this.get_username();
 		this.a_get_username();
+		this.pushMod();
 	},
 };
 </script>
@@ -130,5 +148,120 @@ export default {
 <style scoped>
 .card-body {
 	padding: 0 !important;
+}
+.trash {
+	background: #ff6873;
+	width: 66px;
+	height: 80px;
+	display: inline-block;
+	margin: 0 auto;
+
+	position: relative;
+	-webkit-border-bottom-right-radius: 6px;
+	-webkit-border-bottom-left-radius: 6px;
+	-moz-border-radius-bottomright: 6px;
+	-moz-border-radius-bottomleft: 6px;
+	border-bottom-right-radius: 6px;
+	border-bottom-left-radius: 6px;
+}
+.trash:after {
+	position: absolute;
+	left: -99px;
+	right: 0;
+	bottom: -50px;
+	width: 300px;
+}
+.trash span {
+	position: absolute;
+	height: 12px;
+	background: #ff6873;
+	top: -19px;
+	left: -10px;
+	right: -10px;
+
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	transform: rotate(0deg);
+	transition: transform 250ms;
+	transform-origin: 19% 100%;
+}
+.trash span:after {
+	content: "";
+	position: absolute;
+	width: 27px;
+	height: 7px;
+	background: #ff6873;
+	top: -10px;
+
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	transform: rotate(0deg);
+	transition: transform 250ms;
+	transform-origin: 19% 100%;
+	left: 27px;
+}
+
+.trash i {
+	position: relative;
+	width: 5px;
+	height: 50px;
+	background: #fff;
+	display: block;
+	margin: 14px auto;
+	border-radius: 5px;
+}
+.trash i:after {
+	content: "";
+	width: 5px;
+	height: 50px;
+	background: #fff;
+	position: absolute;
+	left: -18px;
+	border-radius: 5px;
+}
+.trash i:before {
+	content: "";
+	width: 5px;
+	height: 50px;
+	background: #fff;
+	position: absolute;
+	right: -18px;
+	border-radius: 5px;
+}
+
+.trash:hover span {
+	transform: rotate(-45deg);
+	transition: transform 250ms;
+}
+.bounce-transition {
+	display: inline-block; /* otherwise scale animation won't work */
+}
+.bounce-enter {
+	animation: bounce-in 0.5s;
+}
+.bounce-leave {
+	animation: bounce-out 0.5s;
+}
+@keyframes bounce-in {
+	0% {
+		transform: scale(0);
+	}
+	50% {
+		transform: scale(1.5);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+@keyframes bounce-out {
+	0% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.5);
+	}
+	100% {
+		transform: scale(0);
+	}
 }
 </style>
