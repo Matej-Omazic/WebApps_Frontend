@@ -2,7 +2,7 @@ import axios from "axios";
 import $router from "@/router";
 
 let Service = axios.create({
-	baseURL: "https://arcane-fjord-44394.herokuapp.com/",
+	baseURL: "http://localhost:3100/",
 	timeout: 3000,
 });
 
@@ -320,6 +320,18 @@ let a_Auth = {
 			return true;
 		}
 		return false;
+	},
+	async a_changePassword(a_old_password, a_new_password) {
+		let response = await Service.patch("/admins", {
+			old_password: a_old_password,
+			new_password: a_new_password,
+		});
+		console.log("respone", response);
+		let user_a = response.data;
+
+		localStorage.setItem("user", JSON.stringify(user_a));
+
+		return true;
 	},
 };
 

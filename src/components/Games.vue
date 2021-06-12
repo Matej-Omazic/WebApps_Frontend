@@ -25,7 +25,7 @@
 			</div>
 
 			<div class=" mx-auto" style="max-width: 900px;">
-				<b-card-group deck style="margin: 0;">
+				<b-card-group deck style="margin: 0; cursor:pointer;">
 					<div @click="gotoDetails(game)" v-for="game in games" :key="game.id">
 						<game-card :info="game" />
 					</div>

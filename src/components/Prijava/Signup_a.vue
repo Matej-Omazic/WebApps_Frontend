@@ -7,7 +7,7 @@
 		>
 			<form novalidate @submit.prevent="register1">
 				<p class="text-center mb-2 mt-5" style="font-size:35px;">
-					Create account
+					Create account as moderator
 				</p>
 				<div style="max-width:400px;" class="mx-auto">
 					<mdb-input

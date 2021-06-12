@@ -9,13 +9,7 @@
 
 		<!--Popular Games-->
 		<div v-if="!a_username.admin">
-			<br />
-			<br />
-			<br />
-			<br />
-			<br />
-			<br />
-			<div style="text-align: left;" class="ml-5">
+			<div style="text-align: left;" class="ml-5 mt-5">
 				<div class="mb-5" style="float:left">Popular Games</div>
 				<br />
 				<hr style="clear: none; position: relative; top: 0.8rem;" />
@@ -90,7 +84,7 @@
 			</div>
 		</div>
 
-		<div v-if="a_username.admin"><br /><br /><br /><br /><br /><br /></div>
+		<div v-if="a_username.admin"></div>
 
 		<Footer />
 	</div>

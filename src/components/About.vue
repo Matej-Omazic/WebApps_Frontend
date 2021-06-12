@@ -109,13 +109,8 @@ export default {
 <style scoped>
 #tekst {
 	line-height: 30px;
-	font-family: "Segoe UI";
-	color: black;
 }
-h2 {
-	font-family: "Segoe UI";
-	color: black;
-}
+
 .onama {
 	display: flex;
 	justify-content: center;
