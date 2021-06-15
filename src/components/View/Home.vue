@@ -74,7 +74,7 @@
 					<div class="column">
 						<router-link to="Games/60ba420b5b55f53bcb5edf18"
 							><img
-								src="https://i.ibb.co/jfySqVB/resized-image-Promo.jpg"
+								src="https://i.ibb.co/f015BTX/resized-image-Promo.jpg"
 								alt="CP2077"
 								class="mb-3"
 								style="width:140px; height:180px;"

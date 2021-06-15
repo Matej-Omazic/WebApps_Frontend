@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<Navbar />
-		<div v-if="!a_username.admin">
+		<div>
 			<div
 				class="mx-auto mt-5"
 				style=" max-width:900px; height:246px; background-color:#eceff1 ;"
@@ -22,21 +22,26 @@
 			</div>
 
 			<form>
-				<div class="examplebox fadesample max-width: 900px; mt-4 mb-3">
+				<div class=" max-width: 900px; mt-4 mb-3">
 					<b-card
 						class="mx-auto text-left"
 						style="width: 900px; -webkit-box-shadow:none; -moz-box-shadow:none; box-shadow:none; padding:0;"
 					>
-						<div v-for="lista in lista" :key="lista._id">
-							<img v-bind:src="lista.url" style="width:140px; height:180px;" />
-							<label>
-								<p class="text-left ml-3">{{ lista.name }}</p>
-								<p class="text-left ml-3">&#11088; {{ lista.grade }}</p>
-							</label>
-							<a @click.prevent="del_plist(lista.name)" class="close" />
+						<transition-group tag="div" name="fade" class="lista">
+							<div v-for="lista in lista" :key="lista.name">
+								<img
+									v-bind:src="lista.url"
+									style="width:140px; height:180px;"
+								/>
+								<label>
+									<p class="text-left ml-3">{{ lista.name }}</p>
+									<p class="text-left ml-3">&#11088; {{ lista.grade }}</p>
+								</label>
+								<a @click.prevent="del_plist(lista.name)" class="close" />
 
-							<hr style="background-color:#c2c2c2" />
-						</div>
+								<hr style="background-color:#c2c2c2" />
+							</div>
+						</transition-group>
 					</b-card>
 				</div>
 			</form>
@@ -46,15 +51,6 @@
 			<br /><br /><br />
 		</div>
 
-		<div v-if="a_username.admin">
-			<br /><img
-				src="https://i.ibb.co/x8grpxd/404-error-design-with-sign-23-2147735302.jpg"
-				alt="Stop"
-				class="mb-3"
-				style="width:626px; height:588px;"
-			/>
-		</div>
-
 		<Footer />
 	</div>
 </template>
@@ -62,7 +58,7 @@
 <script>
 import Navbar from "@/components/Layout/Navbar";
 import Footer from "@/components/Layout/Footer";
-import GameCard from "@/components/GameCard";
+import GameCard from "@/components/View/GameCard";
 import { Playlist, Service, Auth, a_Auth } from "@/services/index.js";
 export default {
 	name: "Playlist",
@@ -70,7 +66,7 @@ export default {
 		return {
 			lista: {},
 			auth: Auth.state,
-			a_auth: a_Auth.state,
+
 			username: "",
 			a_username: "",
 		};
@@ -102,13 +98,6 @@ export default {
 				console.clear(e);
 			}
 		},
-		async a_get_username() {
-			try {
-				this.a_username = await a_Auth.a_getOne(this.a_auth.userEmail);
-			} catch (e) {
-				console.clear(e);
-			}
-		},
 	},
 	mounted() {
 		window.scrollTo(0, 0);
@@ -116,7 +105,6 @@ export default {
 	created() {
 		this.pozoviList();
 		this.get_username();
-		this.a_get_username();
 	},
 };
 </script>
@@ -166,12 +154,11 @@ export default {
 	animation-name: fadeIn;
 	animation-duration: 1s;
 }
-@keyframes fadeIn {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
+.fade-enter-active,
+.fade-leave-active {
+	transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+	opacity: 0;
 }
 </style>

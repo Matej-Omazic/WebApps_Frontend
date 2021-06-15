@@ -61,7 +61,7 @@ import {
 } from "mdbvue";
 import Navbar from "@/components/Layout/Navbar";
 import Footer from "@/components/Layout/Footer";
-import GameCard from "@/components/GameCard";
+import GameCard from "@/components/View/GameCard";
 import store from "@/store";
 import { Games, Auth, a_Auth } from "@/services/index.js";
 import _ from "lodash";
